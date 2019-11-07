@@ -13,6 +13,9 @@ https://ospreypublishing.com/playcryptid/
     * Maximale de Element / Biome
 * Position
     * Se trouve dans Biome ou dans Biome 
+* Couleur
+    * Se trouve a X cases de Rouge
+    
 
 ####On peux augmenter la difficulté en utilisant des indices négatifs (il ne se trouve pas ...)
 ***

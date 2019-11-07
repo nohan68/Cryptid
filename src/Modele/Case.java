@@ -13,11 +13,6 @@ public class Case {
 
     @Override
     public String toString() {
-        String r =  " ["+this.biome+ " | ";
-        for (Element e : this.elements){
-            r = r + e;
-        }
-        r = r+ " ]";
-        return r;
+        return " ["+this.biome+ " | "+this.elements.size()+ " ]";
     }
 }
