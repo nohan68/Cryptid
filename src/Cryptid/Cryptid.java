@@ -1,6 +1,8 @@
 package Cryptid;
 
+import Controller.JeuController;
 import Controller.MenuController;
+import Modele.Plateau;
 
 import javax.swing.*;
 import java.awt.*;
@@ -15,6 +17,7 @@ public class Cryptid extends JFrame implements ActionListener {
 
     private DrawPane       panneauJeu;
     private MenuController menuController;
+    private Plateau plateau;
 
     public JPanel  fPrincipale;
 
@@ -59,7 +62,6 @@ public class Cryptid extends JFrame implements ActionListener {
         lTitreConfig= new JLabel("Préparation de la partie");
         bLancerPartie=new JButton("Lancer !");
 
-        panneauJeu = new DrawPane(this);
     }
 
     public void initWigets(){
@@ -96,11 +98,15 @@ public class Cryptid extends JFrame implements ActionListener {
 
     public void lancerPartie(){
         updater.start();
+        panneauJeu = new DrawPane(this,plateau);
         this.fPrincipale.remove(this.fConfig);
         setContentPane(panneauJeu);
         fPrincipale.revalidate();
         revalidate();
         fPrincipale.repaint();
+
+        plateau = new Plateau(12);
+
     }
 
     public void mainloop(){

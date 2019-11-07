@@ -1,5 +1,7 @@
 package Cryptid;
 
+import Modele.Plateau;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -10,9 +12,13 @@ public class DrawPane extends JPanel implements ActionListener {
     private Timer timer;
     private int ips = 60;
 
-    public DrawPane(Cryptid root){
+    //Modele
+    Plateau plateau;
+
+    public DrawPane(Cryptid root, Plateau plateau){
         super();
         this.root = root;
+        this.plateau = plateau;
         timer = new Timer(1000/ips,this);
         timer.start();
 
