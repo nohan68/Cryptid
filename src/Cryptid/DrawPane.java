@@ -34,6 +34,11 @@ public class DrawPane extends JPanel implements ActionListener {
         Toolkit.getDefaultToolkit().sync();
     }
 
+    public void dessinnerGrille(Graphics g){
+        float tailleCase = r
+        for(int i=0;i<)
+    }
+
     public void dessinerFond(Graphics g){
         g.setColor(Color.BLACK);
         g.fillRect(0,0,Cryptid.WIDTH,Cryptid.HEIGHT);
