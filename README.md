@@ -1,9 +1,6 @@
 ###Cryptid
 
 https://trello.com/b/pXvrpvuK/cryptid
-
-<<<<<<< Updated upstream
-c'est le trello
 =======
 https://ospreypublishing.com/playcryptid/
 
@@ -19,4 +16,3 @@ https://ospreypublishing.com/playcryptid/
 
 ####On peux augmenter la difficulté en utilisant des indices négatifs (il ne se trouve pas ...)
 ***
->>>>>>> Stashed changes
