@@ -2,6 +2,7 @@
 
 https://trello.com/b/pXvrpvuK/cryptid
 
+<<<<<<< Updated upstream
 c'est le trello
 =======
 https://ospreypublishing.com/playcryptid/
@@ -12,10 +13,10 @@ https://ospreypublishing.com/playcryptid/
     * Maximale de Element / Biome
 * Position
     * Se trouve dans Biome ou dans Biome 
-    * Se trouve à n case de l'extremité
 * Couleur
     * Se trouve a X cases de Rouge
     
 
 ####On peux augmenter la difficulté en utilisant des indices négatifs (il ne se trouve pas ...)
 ***
+>>>>>>> Stashed changes
