@@ -23,16 +23,19 @@ public class DrawPane extends JPanel implements ActionListener {
         timer = new Timer(1000/ips,this);
         timer.start();
 
-        tailleCase = new Point(
-                root.WIDTH/plateau.getTaille(),
-                root.HEIGHT/plateau.getTaille()
-        );
+
 
     }
 
     @Override
     public void paintComponent(Graphics g) {
         super.paintComponent(g);
+        Cryptid.WIDTH = (int) root.getContentPane().getSize().getWidth();
+        Cryptid.HEIGHT =  (int) root.getContentPane().getSize().getHeight();
+        tailleCase = new Point(
+                root.WIDTH/plateau.getTaille(),
+                root.HEIGHT/plateau.getTaille()
+        );
         this.dessinerFond(g);
         //
         this.dessinnerBiomes(g);

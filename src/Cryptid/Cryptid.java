@@ -10,8 +10,8 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 public class Cryptid extends JFrame implements ActionListener {
-    public static int WIDTH  = 1200;
-    public static int HEIGHT = 1200;
+    public static int WIDTH  = 1000;
+    public static int HEIGHT = 1000;
 
     private int vitesseActualisation = 1000;
 
