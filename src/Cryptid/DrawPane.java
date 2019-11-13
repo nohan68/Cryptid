@@ -1,6 +1,5 @@
 package Cryptid;
 
-import Modele.Case;
 import Modele.Plateau;
 
 import javax.swing.*;
@@ -9,6 +8,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 public class DrawPane extends JPanel implements ActionListener {
+    private Point tailleCase;
     private Cryptid root;
     private Timer timer;
     private int ips = 60;
@@ -23,6 +23,11 @@ public class DrawPane extends JPanel implements ActionListener {
         timer = new Timer(1000/ips,this);
         timer.start();
 
+        tailleCase = new Point(
+                root.WIDTH/plateau.getTaille(),
+                root.HEIGHT/plateau.getTaille()
+        );
+
     }
 
     @Override
@@ -30,21 +35,15 @@ public class DrawPane extends JPanel implements ActionListener {
         super.paintComponent(g);
         this.dessinerFond(g);
         //
-        this.dessinnerGrille(g);
-        //
+        this.dessinnerBiomes(g);
+        //this.dessinnerGrille(g);
+
         Toolkit.getDefaultToolkit().sync();
     }
 
     public void dessinnerGrille(Graphics g){
-
         g.setColor(Color.PINK);
-        Point tailleCase = new Point(
-                root.WIDTH/plateau.getTaille(),
-                root.HEIGHT/plateau.getTaille()
-        );
-        Point delta = new Point();
 
-        /*
         for(int i=0;i<tailleCase.x*plateau.getTaille();i=i+tailleCase.x){
 
             g.drawLine(i,0,i,root.HEIGHT);
@@ -52,20 +51,14 @@ public class DrawPane extends JPanel implements ActionListener {
         for(int j=0;j<tailleCase.y*plateau.getTaille();j=j+tailleCase.y){
             g.drawLine(0,j,root.WIDTH,j);
         }
-        */
 
+    }
+
+    public void dessinnerBiomes(Graphics g){
+
+        Point delta = new Point();
         for(int i=0;i<tailleCase.x*plateau.getTaille();i=i+tailleCase.x){
             for(int j=0;j<tailleCase.y*plateau.getTaille();j=j+tailleCase.y){
-                /*
-                double[][] polygone = new double[][]{
-                        {i+(tailleCase.x/3),j},
-                        {i,j+(tailleCase.y/2)},
-                        {i+(tailleCase.x/3),j+tailleCase.y},
-                        {i+(2*tailleCase.x/3),j+tailleCase.y},
-                        {i+(tailleCase.x/2),j+tailleCase.y},
-                        {i+(2*tailleCase.x/3),j}
-                };
-                */
                 if((i/tailleCase.x)%2==0){
                     delta.x = 0;
                     delta.y = tailleCase.y/2;
@@ -99,13 +92,13 @@ public class DrawPane extends JPanel implements ActionListener {
 
                 switch (plateau.getCase(i/tailleCase.x,j/tailleCase.y).getBiome()){
                     case OCEAN:
-                        g.setColor(Color.BLUE);
+                        g.setColor(new Color(117, 193, 255));
                         break;
                     case DESERT:
-                        g.setColor(Color.YELLOW);
+                        g.setColor(new Color(255, 248, 117));
                         break;
                     case PLAINE:
-                        g.setColor(Color.GREEN);
+                        g.setColor(new Color(90, 209, 122));
                         break;
                     case SAVANE:
                         g.setColor(new Color(219, 171, 75));
@@ -123,14 +116,16 @@ public class DrawPane extends JPanel implements ActionListener {
                 g.fillPolygon(p);
 
             }
+
         }
+    }
 
-
-
+    public Point getTailleCase() {
+        return tailleCase;
     }
 
     public void dessinerFond(Graphics g){
-        g.setColor(Color.BLACK);
+        g.setColor(new Color(97, 79, 60));
         g.fillRect(0,0,Cryptid.WIDTH,Cryptid.HEIGHT);
     }
 

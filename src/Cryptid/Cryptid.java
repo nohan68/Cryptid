@@ -10,13 +10,14 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 public class Cryptid extends JFrame implements ActionListener {
-    public final static int WIDTH  = 800;
-    public final static int HEIGHT = 800;
+    public static int WIDTH  = 1200;
+    public static int HEIGHT = 1200;
 
     private int vitesseActualisation = 1000;
 
     private DrawPane       panneauJeu;
     private MenuController menuController;
+    private JeuController jeuController;
     private Plateau plateau;
 
     public JPanel  fPrincipale;
@@ -61,7 +62,6 @@ public class Cryptid extends JFrame implements ActionListener {
         bAddJoueur  = new JButton("Ajouter un joueur");
         lTitreConfig= new JLabel("Préparation de la partie");
         bLancerPartie=new JButton("Lancer !");
-
     }
 
     public void initWigets(){
@@ -85,11 +85,6 @@ public class Cryptid extends JFrame implements ActionListener {
         fConfig.add(lTitreConfig);
         fConfig.add(bAddJoueur);
         fConfig.add(bLancerPartie);
-
-
-
-
-
     }
 
     public static void main(String[] args){
@@ -98,9 +93,10 @@ public class Cryptid extends JFrame implements ActionListener {
 
     public void lancerPartie(){
         updater.start();
-
         plateau = new Plateau(12);
         panneauJeu = new DrawPane(this,plateau);
+        jeuController = new JeuController(this);
+        panneauJeu.addMouseListener(jeuController);
         this.fPrincipale.remove(this.fConfig);
         setContentPane(panneauJeu);
         fPrincipale.revalidate();
@@ -113,6 +109,14 @@ public class Cryptid extends JFrame implements ActionListener {
     public void mainloop(){
         //à chaque actualisation
         repaint();
+    }
+
+    public Plateau getPlateau() {
+        return plateau;
+    }
+
+    public DrawPane getPanneauJeu(){
+        return panneauJeu;
     }
 
     @Override

@@ -2,8 +2,8 @@ package Modele;
 
 
 import java.awt.*;
-import java.util.ArrayList;
 import java.util.Random;
+
 
 public class Plateau {
     private int taille;
@@ -53,13 +53,19 @@ public class Plateau {
         System.out.println(this);
     }
 
-    public Point pixelToCase(){
+    public Case pixelToCase(Point pixel, Point tailleCase){
+        int i;
+        int j;
 
+        i = pixel.x/tailleCase.x;
+        if((pixel.x/tailleCase.x)%2==0){
+            j = (pixel.y - tailleCase.y/2)/tailleCase.y;
+        }else{
+            j = pixel.y/tailleCase.y;
+        }
+        return getCase(i,j);
     }
 
-    public Point caseToPixel(){
-
-    }
 
     public int getTaille() {
         return this.taille;
