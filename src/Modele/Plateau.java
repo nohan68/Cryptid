@@ -27,9 +27,7 @@ public class Plateau {
         Point txExp;
         cases = new Case[taille][taille];
 
-        cases[11][0] = new Case(Biome.OCEAN,new ArrayList<Element>());
-
-        while(casesPosees < this.taille*this.taille-1){
+        while(casesPosees < this.taille*this.taille){
             txExp = new Point(
                     this.hazardeur.nextInt(this.taille/5),
                     this.hazardeur.nextInt(this.taille/5)
@@ -51,17 +49,24 @@ public class Plateau {
                 }
                 System.out.println(casesPosees);
             }
-
-
-
         }
         System.out.println(this);
+    }
+
+    public Point pixelToCase(){
 
     }
 
+    public Point caseToPixel(){
+
+    }
 
     public int getTaille() {
         return this.taille;
+    }
+
+    public Case getCase(int x, int y){
+        return cases[x][y];
     }
 
     @Override

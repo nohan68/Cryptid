@@ -98,6 +98,7 @@ public class Cryptid extends JFrame implements ActionListener {
 
     public void lancerPartie(){
         updater.start();
+
         plateau = new Plateau(12);
         panneauJeu = new DrawPane(this,plateau);
         this.fPrincipale.remove(this.fConfig);
@@ -112,7 +113,6 @@ public class Cryptid extends JFrame implements ActionListener {
     public void mainloop(){
         //à chaque actualisation
         repaint();
-
     }
 
     @Override

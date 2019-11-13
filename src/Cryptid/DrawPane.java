@@ -1,5 +1,6 @@
 package Cryptid;
 
+import Modele.Case;
 import Modele.Plateau;
 
 import javax.swing.*;
@@ -43,7 +44,7 @@ public class DrawPane extends JPanel implements ActionListener {
         );
         Point delta = new Point();
 
-
+        /*
         for(int i=0;i<tailleCase.x*plateau.getTaille();i=i+tailleCase.x){
 
             g.drawLine(i,0,i,root.HEIGHT);
@@ -51,6 +52,7 @@ public class DrawPane extends JPanel implements ActionListener {
         for(int j=0;j<tailleCase.y*plateau.getTaille();j=j+tailleCase.y){
             g.drawLine(0,j,root.WIDTH,j);
         }
+        */
 
         for(int i=0;i<tailleCase.x*plateau.getTaille();i=i+tailleCase.x){
             for(int j=0;j<tailleCase.y*plateau.getTaille();j=j+tailleCase.y){
@@ -86,17 +88,39 @@ public class DrawPane extends JPanel implements ActionListener {
                 };
 
                 int[] polygoney = new int[]{
-                        delta.y + j,
+                        delta.y + j ,
                         delta.y + j+(tailleCase.y/2),
                         delta.y + j+tailleCase.y,
                         delta.y + j+tailleCase.y,
                         delta.y + j+tailleCase.y,
-                        delta.y + j+tailleCase.y/2,
-                        delta.y + j
+                        delta.y + j+tailleCase.y/2 +1,
+                        delta.y + j +1
                 };
-                Polygon p =new Polygon(polygonex,polygoney,polygonex.length);
-                g.drawPolygon(p);
 
+                switch (plateau.getCase(i/tailleCase.x,j/tailleCase.y).getBiome()){
+                    case OCEAN:
+                        g.setColor(Color.BLUE);
+                        break;
+                    case DESERT:
+                        g.setColor(Color.YELLOW);
+                        break;
+                    case PLAINE:
+                        g.setColor(Color.GREEN);
+                        break;
+                    case SAVANE:
+                        g.setColor(new Color(219, 171, 75));
+                        break;
+                    case MONTAGNE:
+                        g.setColor(new Color(212, 175, 135));
+                        break;
+                    case MARECAGES:
+                        g.setColor(new Color(86, 105, 54));
+                        break;
+                }
+
+
+                Polygon p =new Polygon(polygonex,polygoney,polygonex.length);
+                g.fillPolygon(p);
 
             }
         }
