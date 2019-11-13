@@ -61,7 +61,7 @@ public class Plateau {
 
 
     public int getTaille() {
-        return taille;
+        return this.taille;
     }
 
     @Override

@@ -29,14 +29,80 @@ public class DrawPane extends JPanel implements ActionListener {
         super.paintComponent(g);
         this.dessinerFond(g);
         //
-
+        this.dessinnerGrille(g);
         //
         Toolkit.getDefaultToolkit().sync();
     }
 
     public void dessinnerGrille(Graphics g){
-        float tailleCase = r
-        for(int i=0;i<)
+
+        g.setColor(Color.PINK);
+        Point tailleCase = new Point(
+                root.WIDTH/plateau.getTaille(),
+                root.HEIGHT/plateau.getTaille()
+        );
+        Point delta = new Point();
+
+
+        for(int i=0;i<tailleCase.x*plateau.getTaille();i=i+tailleCase.x){
+
+            g.drawLine(i,0,i,root.HEIGHT);
+        }
+        for(int j=0;j<tailleCase.y*plateau.getTaille();j=j+tailleCase.y){
+            g.drawLine(0,j,root.WIDTH,j);
+        }
+
+        for(int i=0;i<tailleCase.x*plateau.getTaille();i=i+tailleCase.x){
+            for(int j=0;j<tailleCase.y*plateau.getTaille();j=j+tailleCase.y){
+                /*
+                double[][] polygone = new double[][]{
+                        {i+(tailleCase.x/3),j},
+                        {i,j+(tailleCase.y/2)},
+                        {i+(tailleCase.x/3),j+tailleCase.y},
+                        {i+(2*tailleCase.x/3),j+tailleCase.y},
+                        {i+(tailleCase.x/2),j+tailleCase.y},
+                        {i+(2*tailleCase.x/3),j}
+                };
+                */
+                if((i/tailleCase.x)%2==0){
+                    delta.x = 0;
+                    delta.y = tailleCase.y/2;
+                    g.setColor(Color.YELLOW);
+                }else{
+                    delta.x = 0;
+                    delta.y = 0;
+                    g.setColor(Color.RED);
+                }
+
+
+                int[] polygonex = new int[]{
+                        delta.x + i+(tailleCase.x/3),
+                        delta.x + i - tailleCase.x/4, ///
+                        delta.x + i+(tailleCase.x/3),
+                        delta.x + i+(2*tailleCase.x/3),
+                        delta.x + i+(2*tailleCase.x/3),
+                        delta.x + i+tailleCase.x + tailleCase.x/4,
+                        delta.x + i+(2*tailleCase.x/3)
+                };
+
+                int[] polygoney = new int[]{
+                        delta.y + j,
+                        delta.y + j+(tailleCase.y/2),
+                        delta.y + j+tailleCase.y,
+                        delta.y + j+tailleCase.y,
+                        delta.y + j+tailleCase.y,
+                        delta.y + j+tailleCase.y/2,
+                        delta.y + j
+                };
+                Polygon p =new Polygon(polygonex,polygoney,polygonex.length);
+                g.drawPolygon(p);
+
+
+            }
+        }
+
+
+
     }
 
     public void dessinerFond(Graphics g){

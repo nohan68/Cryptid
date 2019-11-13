@@ -11,7 +11,7 @@ import java.awt.event.ActionListener;
 
 public class Cryptid extends JFrame implements ActionListener {
     public final static int WIDTH  = 800;
-    public final static int HEIGHT = 600;
+    public final static int HEIGHT = 800;
 
     private int vitesseActualisation = 1000;
 
@@ -98,6 +98,7 @@ public class Cryptid extends JFrame implements ActionListener {
 
     public void lancerPartie(){
         updater.start();
+        plateau = new Plateau(12);
         panneauJeu = new DrawPane(this,plateau);
         this.fPrincipale.remove(this.fConfig);
         setContentPane(panneauJeu);
@@ -105,7 +106,6 @@ public class Cryptid extends JFrame implements ActionListener {
         revalidate();
         fPrincipale.repaint();
 
-        plateau = new Plateau(12);
 
     }
 
