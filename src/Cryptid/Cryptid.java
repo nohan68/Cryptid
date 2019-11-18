@@ -2,6 +2,7 @@ package Cryptid;
 
 import Controller.JeuController;
 import Controller.MenuController;
+import Modele.Piece;
 import Modele.Plateau;
 
 import javax.swing.*;
@@ -35,6 +36,10 @@ public class Cryptid extends JFrame implements ActionListener {
     private Timer updater;
 
 
+    public JPanel menuPartie;
+    public JButton bPieceCubique;
+    public JButton bPieceRonde;
+
     public Cryptid(){
         super("Cryptid");
         setSize(WIDTH,HEIGHT);
@@ -62,6 +67,10 @@ public class Cryptid extends JFrame implements ActionListener {
         bAddJoueur  = new JButton("Ajouter un joueur");
         lTitreConfig= new JLabel("Préparation de la partie");
         bLancerPartie=new JButton("Lancer !");
+
+        menuPartie = new JPanel();
+        bPieceCubique = new JButton("Pièce cubique", Piece.PIECECUBIQUE);
+        bPieceRonde = new JButton("Pièce ronde", Piece.PIECERONDE);
     }
 
     public void initWigets(){
@@ -85,6 +94,11 @@ public class Cryptid extends JFrame implements ActionListener {
         fConfig.add(lTitreConfig);
         fConfig.add(bAddJoueur);
         fConfig.add(bLancerPartie);
+
+        menuPartie.setLayout(new BoxLayout(menuPartie, BoxLayout.Y_AXIS));
+        menuPartie.setSize(300,300);
+        menuPartie.add(bPieceCubique);
+        menuPartie.add(bPieceRonde);
     }
 
     public static void main(String[] args){

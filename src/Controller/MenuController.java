@@ -57,6 +57,10 @@ public class MenuController implements ActionListener {
                 root.lancerPartie();
             }
 
+            if(e.getSource() == root.bQuitter){
+                System.exit(0);
+            }
+
         }
     }
 }
