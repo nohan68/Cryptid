@@ -1,6 +1,9 @@
 package Modele;
 
 
+import Modele.Types.Biome;
+import Modele.Types.Element;
+
 import java.awt.*;
 import java.util.Random;
 
@@ -43,7 +46,7 @@ public class Plateau {
                     y = Math.abs(hzPos.y+j)%this.taille;
                     //System.out.println(x+ " "+y);
                     if(cases[x][y] == null){
-                        cases[x][y] = new Case(b,Element.getRandom());
+                        cases[x][y] = new Case(b, Element.getRandom());
                         casesPosees++;
                     }
                 }
@@ -71,9 +74,20 @@ public class Plateau {
         return this.taille;
     }
 
+    public Point getMonstre() { return monstre; }
+
     public Case getCase(int x, int y){
         return cases[x][y];
     }
+
+    public int getDistance(Point a, Point b){
+        return (int) Math.floor(Math.sqrt(Math.pow(b.x-a.x,2)+Math.pow(b.y-a.y,2)));
+    }
+
+    public int getDistanceFromCryptid(Point a){
+        return getDistance(a,this.monstre);
+    }
+
 
     @Override
     public String toString() {

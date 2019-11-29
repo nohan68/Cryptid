@@ -1,4 +1,4 @@
-package Modele;
+package Modele.Types;
 
 import javax.imageio.ImageIO;
 import javax.swing.*;
@@ -14,7 +14,7 @@ public enum Piece implements Icon {
     private final BufferedImage image;
 
     Piece(String filename) {
-        BufferedImage tempImage = null;
+        BufferedImage tempImage;
         try {
             tempImage = ImageIO.read(new File(filename));
         } catch (Exception e) {

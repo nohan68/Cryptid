@@ -1,4 +1,4 @@
-package Modele;
+package Modele.Types;
 
 import java.util.ArrayList;
 import java.util.Random;

@@ -1,5 +1,7 @@
 package Cryptid;
 
+import Modele.Case;
+import Modele.Types.Element;
 import Modele.Plateau;
 
 import javax.swing.*;
@@ -62,6 +64,12 @@ public class DrawPane extends JPanel implements ActionListener {
         Point delta = new Point();
         for(int i=0;i<tailleCase.x*plateau.getTaille();i=i+tailleCase.x){
             for(int j=0;j<tailleCase.y*plateau.getTaille();j=j+tailleCase.y){
+                /*
+                    Dessin en fonction de la Case 'laCase'
+                 */
+
+                Case laCase = plateau.getCase(i/tailleCase.x,j/tailleCase.y);
+
                 if((i/tailleCase.x)%2==0){
                     delta.x = 0;
                     delta.y = tailleCase.y/2;
@@ -74,18 +82,18 @@ public class DrawPane extends JPanel implements ActionListener {
 
 
                 int[] polygonex = new int[]{
-                        delta.x + i+(tailleCase.x/3),
-                        delta.x + i - tailleCase.x/4, ///
-                        delta.x + i+(tailleCase.x/3),
-                        delta.x + i+(2*tailleCase.x/3),
-                        delta.x + i+(2*tailleCase.x/3),
-                        delta.x + i+tailleCase.x + tailleCase.x/4,
-                        delta.x + i+(2*tailleCase.x/3)
+                        delta.x + i+(tailleCase.x/6),
+                        delta.x + i - tailleCase.x/8, ///
+                        delta.x + i+(tailleCase.x/6),
+                        delta.x + i+(5*tailleCase.x/6),
+                        delta.x + i+(5*tailleCase.x/6),
+                        delta.x + i+tailleCase.x + tailleCase.x/8,
+                        delta.x + i+(5*tailleCase.x/6)
                 };
 
                 int[] polygoney = new int[]{
                         delta.y + j ,
-                        delta.y + j+(tailleCase.y/2),
+                        delta.y + j+(tailleCase.y/2)+1,
                         delta.y + j+tailleCase.y,
                         delta.y + j+tailleCase.y,
                         delta.y + j+tailleCase.y,
@@ -93,7 +101,7 @@ public class DrawPane extends JPanel implements ActionListener {
                         delta.y + j +1
                 };
 
-                switch (plateau.getCase(i/tailleCase.x,j/tailleCase.y).getBiome()){
+                switch (laCase.getBiome()){
                     case OCEAN:
                         g.setColor(new Color(117, 193, 255));
                         break;
@@ -115,8 +123,37 @@ public class DrawPane extends JPanel implements ActionListener {
                 }
 
 
+
                 Polygon p =new Polygon(polygonex,polygoney,polygonex.length);
                 g.fillPolygon(p);
+
+                for(Element e : laCase.getElements()){
+                    switch (e){
+                        // TODO: dessiner les elements sur g en f(x) de la case
+                        case ARBRE:
+                            break;
+                        case ROCHER:
+                            break;
+                        case DUNE:
+                            break;
+                        case CACTUS:
+                            break;
+                        case MAELSTORM:
+                            break;
+                        case ETANG:
+                            break;
+                        case SAPIN:
+                            break;
+                        case PYRAMIDE:
+                            break;
+                        case MAISON:
+                            break;
+                        case ANIMEAUX:
+                            break;
+                        case BUISSONS:
+                            break;
+                    }
+                }
 
             }
 
@@ -128,7 +165,7 @@ public class DrawPane extends JPanel implements ActionListener {
     }
 
     public void dessinerFond(Graphics g){
-        g.setColor(new Color(97, 79, 60));
+        g.setColor(new Color(0, 0, 0));
         g.fillRect(0,0,Cryptid.WIDTH,Cryptid.HEIGHT);
     }
 

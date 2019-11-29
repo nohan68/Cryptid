@@ -1,5 +1,8 @@
 package Modele;
 
+import Modele.Types.Biome;
+import Modele.Types.Element;
+
 import java.util.ArrayList;
 
 public class Case {
@@ -13,6 +16,10 @@ public class Case {
 
     public Biome getBiome(){
         return biome;
+    }
+
+    public ArrayList<Element> getElements() {
+        return elements;
     }
 
     @Override

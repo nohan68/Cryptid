@@ -2,7 +2,7 @@ package Cryptid;
 
 import Controller.JeuController;
 import Controller.MenuController;
-import Modele.Piece;
+import Modele.Types.Piece;
 import Modele.Plateau;
 
 import javax.swing.*;
