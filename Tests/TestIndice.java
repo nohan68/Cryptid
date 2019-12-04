@@ -6,8 +6,13 @@ public class TestIndice {
 
     @Test
     public void TestIndice(){
-        Plateau p = new Plateau(10);
-        Indice i = new Indice(p);
-        System.out.println(i);
+        Plateau p = new Plateau(12);
+        Indice indice;
+        for(int i=0; i<10;i++){
+           indice = new Indice(p);
+           System.out.println(indice);
+        }
+
+
     }
 }

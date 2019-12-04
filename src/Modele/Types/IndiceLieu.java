@@ -3,9 +3,8 @@ package Modele.Types;
 import java.util.Random;
 
 public enum IndiceLieu {
-    AUCUN(""),
-    BIOME("d'un biome {1}"),
-    ELEMENT("d'un(e){1}");
+    BIOME("d'un biome %s"),
+    ELEMENT("d'un(e) %s");
 
     String message;
 

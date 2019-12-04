@@ -18,8 +18,8 @@ public class Plateau {
         this.taille = taille;
         this.hazardeur = new Random();
         monstre= new Point(
-                this.hazardeur.nextInt(this.taille+1),
-                this.hazardeur.nextInt(this.taille+1)
+                this.hazardeur.nextInt(this.taille),
+                this.hazardeur.nextInt(this.taille)
         );
 
         int casesPosees=0;
@@ -50,10 +50,11 @@ public class Plateau {
                         casesPosees++;
                     }
                 }
-                System.out.println(casesPosees);
             }
+            //System.out.println(casesPosees);
         }
         System.out.println(this);
+        System.out.println("Monstre : "+monstre);
     }
 
     public Case pixelToCase(Point pixel, Point tailleCase){
@@ -76,6 +77,10 @@ public class Plateau {
 
     public Point getMonstre() { return monstre; }
 
+    public Biome getMonstreBiome(){
+        return cases[monstre.x][monstre.y].getBiome();
+    }
+
     public Case getCase(int x, int y){
         return cases[x][y];
     }
@@ -89,14 +94,55 @@ public class Plateau {
     }
 
 
+    public Case getClosestCaseFromCryptidWith(Element e){
+        int min_distance = taille;
+        Case caseToReturn = null;
+        for(int i=0; i<taille;i++){
+            for(int j=0; j<taille;j++){
+                for(Element ec : getCase(i,j).getElements()){
+                    if(ec == e && getDistanceFromCryptid(new Point(i,j))<min_distance){
+                        min_distance = getDistanceFromCryptid(new Point(i,j));
+                        caseToReturn = getCase(i,j);
+                    }
+                }
+            }
+        }
+        return caseToReturn;
+    }
+
+    public Point caseToPosition(Case c){
+        for(int i=0;i<taille;i++){
+            for(int j=0;j<taille;j++){
+                if(c==cases[i][j]){
+                    return new Point(i,j);
+                }
+            }
+        }
+        return null;
+    }
+
+    public Case getClosestCaseFromCryptidWith(Biome b){
+        int min_distance = taille;
+        Case caseToReturn = null;
+        for(int i=0; i<taille;i++){
+            for(int j=0; j<taille;j++){
+                if(b == getCase(i,j).getBiome() && getDistanceFromCryptid(new Point(i,j))<min_distance){
+                    min_distance = getDistanceFromCryptid(new Point(i,j));
+                    caseToReturn = getCase(i,j);
+                }
+            }
+        }
+        return caseToReturn;
+    }
+
     @Override
     public String toString() {
         String r = "";
-        for(Case[] x : this.cases){
-            for(Case y : x){
-                r = r + y;
+        for(int i=0;i<taille;i++){
+            for(int j=0;j<taille;j++){
+                r = r + this.cases[j][i];
             }
-            r = r +"\n";
+            r = r + "\n";
         }
         return r;
     }

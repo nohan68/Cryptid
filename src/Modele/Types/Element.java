@@ -26,7 +26,7 @@ public enum Element {
         return l;
     }
 
-    private static Element getOneRandom(){
+    public static Element getOneRandom(){
         Random hazardeur = new Random();
         return Element.values()[hazardeur.nextInt(Element.values().length)];
     }

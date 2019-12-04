@@ -26,4 +26,13 @@ public class Case {
     public String toString() {
         return " ["+this.biome+ " | "+this.elements.size()+ " ]";
     }
+
+    public String toFullString(){
+        String s = this.getClass() + " <"+this.hashCode()+">\nBiome: [ "+biome+" ] \nElements { ";
+        for(Element e : elements){
+            s = s + " "+e+", ";
+        }
+        s = s.substring(2,s.length()-2) + " }";
+        return s;
+    }
 }

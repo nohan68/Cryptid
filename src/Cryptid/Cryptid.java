@@ -2,6 +2,7 @@ package Cryptid;
 
 import Controller.JeuController;
 import Controller.MenuController;
+import Modele.Indice;
 import Modele.Types.Piece;
 import Modele.Plateau;
 
@@ -116,7 +117,9 @@ public class Cryptid extends JFrame implements ActionListener {
         fPrincipale.revalidate();
         revalidate();
         fPrincipale.repaint();
-
+        for(int i=0;i<10;i++){
+            System.out.println(new Indice(plateau));
+        }
 
     }
 

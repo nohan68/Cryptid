@@ -20,7 +20,7 @@ public class JeuController implements ActionListener, MouseListener {
 
     @Override
     public void mousePressed(MouseEvent mouseEvent) {
-        System.out.println(root.getPlateau().pixelToCase( mouseEvent.getPoint(), root.getPanneauJeu().getTailleCase()) );
+        System.out.println(root.getPlateau().pixelToCase( mouseEvent.getPoint(), root.getPanneauJeu().getTailleCase()).toFullString() );
     }
 
     @Override
