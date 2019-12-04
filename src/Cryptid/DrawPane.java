@@ -1,6 +1,7 @@
 package Cryptid;
 
 import Modele.Case;
+import Modele.Images;
 import Modele.Types.Element;
 import Modele.Plateau;
 
@@ -8,6 +9,11 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.Color;
+import java.awt.Graphics;
+import java.util.Random;
+import javax.swing.JPanel;
+import static Modele.Types.Biome.*;
 
 public class DrawPane extends JPanel implements ActionListener {
     private Point tailleCase;
@@ -24,9 +30,6 @@ public class DrawPane extends JPanel implements ActionListener {
         this.plateau = plateau;
         timer = new Timer(1000/ips,this);
         timer.start();
-
-
-
     }
 
     @Override
@@ -80,7 +83,6 @@ public class DrawPane extends JPanel implements ActionListener {
                     g.setColor(Color.RED);
                 }
 
-
                 int[] polygonex = new int[]{
                         delta.x + i+(tailleCase.x/6),
                         delta.x + i - tailleCase.x/8, ///
@@ -104,6 +106,7 @@ public class DrawPane extends JPanel implements ActionListener {
                 switch (laCase.getBiome()){
                     case OCEAN:
                         g.setColor(new Color(117, 193, 255));
+                        g.drawImage(Images.imgArbre, i + delta.x, j + delta.y, tailleCase.x, tailleCase.y, this);
                         break;
                     case DESERT:
                         g.setColor(new Color(255, 248, 117));
@@ -122,35 +125,67 @@ public class DrawPane extends JPanel implements ActionListener {
                         break;
                 }
 
-
-
-                Polygon p =new Polygon(polygonex,polygoney,polygonex.length);
+                Polygon p = new Polygon(polygonex,polygoney,polygonex.length);
                 g.fillPolygon(p);
 
+                Random random = new Random();
+
                 for(Element e : laCase.getElements()){
-                    switch (e){
-                        // TODO: dessiner les elements sur g en f(x) de la case
+                    switch (e) {
                         case ARBRE:
+                            if ( laCase.getBiome().equals(PLAINE) || laCase.getBiome().equals(MARECAGES) ) {
+                                g.drawImage(Images.imgArbre, i + delta.x, j + delta.y, tailleCase.x, tailleCase.y, this);
+                            }
                             break;
                         case ROCHER:
+                            if ( laCase.getBiome().equals(MONTAGNE) || laCase.getBiome().equals(PLAINE) ) {
+                                g.drawImage(Images.imgRocher, i + delta.x, j + delta.y, tailleCase.x, tailleCase.y, this);
+                            }
                             break;
                         case DUNE:
+                            if ( laCase.getBiome().equals(DESERT) ) {
+                                g.drawImage(Images.imgDune, i + delta.x, j + delta.y, tailleCase.x, tailleCase.y, this);
+                            }
                             break;
                         case CACTUS:
+                            if ( laCase.getBiome().equals(DESERT) ) {
+                                g.drawImage(Images.imgCactus, i + delta.x, j + delta.y, tailleCase.x, tailleCase.y, this);
+                            }
                             break;
                         case MAELSTORM:
+                            if ( laCase.getBiome().equals(OCEAN) ) {
+                                g.drawImage(Images.imgMaelstorm, i + delta.x, j + delta.y, tailleCase.x, tailleCase.y, this);
+                            }
                             break;
                         case ETANG:
+                            if ( laCase.getBiome().equals(OCEAN) ) {
+                                g.drawImage(Images.imgEtang, i + delta.x, j + delta.y, tailleCase.x, tailleCase.y, this);
+                            }
                             break;
                         case SAPIN:
+                            if ( laCase.getBiome().equals(PLAINE) ) {
+                                g.drawImage(Images.imgSapin, i + delta.x, j + delta.y, tailleCase.x, tailleCase.y, this);
+                            }
                             break;
                         case PYRAMIDE:
+                            if ( laCase.getBiome().equals(DESERT) ) {
+                                g.drawImage(Images.imgPyramide, i + delta.x, j + delta.y, tailleCase.x, tailleCase.y, this);
+                            }
                             break;
                         case MAISON:
+                            if ( laCase.getBiome().equals(PLAINE) ) {
+                                g.drawImage(Images.imgMaison, i + delta.x, j + delta.y, tailleCase.x, tailleCase.y, this);
+                            }
                             break;
                         case ANIMEAUX:
+                            if ( laCase.getBiome().equals(MONTAGNE) || laCase.getBiome().equals(PLAINE) ) {
+                                g.drawImage(Images.imgAnimaux, i + delta.x, j + delta.y, tailleCase.x, tailleCase.y, this);
+                            }
                             break;
                         case BUISSONS:
+                            if ( laCase.getBiome().equals(PLAINE) ) {
+                                g.drawImage(Images.imgBuisson, i + delta.x, j + delta.y, tailleCase.x, tailleCase.y, this);
+                            }
                             break;
                     }
                 }
