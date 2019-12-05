@@ -45,7 +45,6 @@ public class DrawPane extends JPanel implements ActionListener {
         //
         this.dessinnerBiomes(g);
         //this.dessinnerGrille(g);
-
         Toolkit.getDefaultToolkit().sync();
     }
 
@@ -128,66 +127,48 @@ public class DrawPane extends JPanel implements ActionListener {
                 Polygon p = new Polygon(polygonex,polygoney,polygonex.length);
                 g.fillPolygon(p);
 
-                Random random = new Random();
+                if(new Point(i/tailleCase.x,j/tailleCase.y).equals(plateau.getMonstre())){
+                    g.setColor(Color.BLACK);
+                    g.fillOval(i,j,tailleCase.x,tailleCase.y);
+                }
 
                 for(Element e : laCase.getElements()){
                     switch (e) {
                         case ARBRE:
-                            if ( laCase.getBiome().equals(PLAINE) || laCase.getBiome().equals(MARECAGES) ) {
-                                g.drawImage(Images.imgArbre, i + delta.x, j + delta.y, tailleCase.x, tailleCase.y, this);
-                            }
+                            g.drawImage(Images.imgArbre, i + delta.x, j + delta.y, tailleCase.x, tailleCase.y, this);
                             break;
                         case ROCHER:
-                            if ( laCase.getBiome().equals(MONTAGNE) || laCase.getBiome().equals(PLAINE) ) {
-                                g.drawImage(Images.imgRocher, i + delta.x, j + delta.y, tailleCase.x, tailleCase.y, this);
-                            }
+                            g.drawImage(Images.imgRocher, i + delta.x, j + delta.y, tailleCase.x, tailleCase.y, this);
                             break;
                         case DUNE:
-                            if ( laCase.getBiome().equals(DESERT) ) {
-                                g.drawImage(Images.imgDune, i + delta.x, j + delta.y, tailleCase.x, tailleCase.y, this);
-                            }
+                            g.drawImage(Images.imgDune, i + delta.x, j + delta.y, tailleCase.x, tailleCase.y, this);
                             break;
                         case CACTUS:
-                            if ( laCase.getBiome().equals(DESERT) ) {
                                 g.drawImage(Images.imgCactus, i + delta.x, j + delta.y, tailleCase.x, tailleCase.y, this);
-                            }
                             break;
                         case MAELSTORM:
-                            if ( laCase.getBiome().equals(OCEAN) ) {
                                 g.drawImage(Images.imgMaelstorm, i + delta.x, j + delta.y, tailleCase.x, tailleCase.y, this);
-                            }
                             break;
                         case ETANG:
-                            if ( laCase.getBiome().equals(OCEAN) ) {
                                 g.drawImage(Images.imgEtang, i + delta.x, j + delta.y, tailleCase.x, tailleCase.y, this);
-                            }
                             break;
                         case SAPIN:
-                            if ( laCase.getBiome().equals(PLAINE) ) {
                                 g.drawImage(Images.imgSapin, i + delta.x, j + delta.y, tailleCase.x, tailleCase.y, this);
-                            }
                             break;
                         case PYRAMIDE:
-                            if ( laCase.getBiome().equals(DESERT) ) {
                                 g.drawImage(Images.imgPyramide, i + delta.x, j + delta.y, tailleCase.x, tailleCase.y, this);
-                            }
                             break;
                         case MAISON:
-                            if ( laCase.getBiome().equals(PLAINE) ) {
                                 g.drawImage(Images.imgMaison, i + delta.x, j + delta.y, tailleCase.x, tailleCase.y, this);
-                            }
                             break;
                         case ANIMEAUX:
-                            if ( laCase.getBiome().equals(MONTAGNE) || laCase.getBiome().equals(PLAINE) ) {
                                 g.drawImage(Images.imgAnimaux, i + delta.x, j + delta.y, tailleCase.x, tailleCase.y, this);
-                            }
                             break;
                         case BUISSONS:
-                            if ( laCase.getBiome().equals(PLAINE) ) {
                                 g.drawImage(Images.imgBuisson, i + delta.x, j + delta.y, tailleCase.x, tailleCase.y, this);
-                            }
                             break;
                     }
+
                 }
 
             }

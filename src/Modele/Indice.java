@@ -33,22 +33,23 @@ public class Indice {
         hazardeur = new Random();
 
         Case c =null;
-        biome = Biome.getRandom();
-        element = Element.getOneRandom();
 
         if(iLieu == IndiceLieu.BIOME){
+            biome = Biome.getRandom();
             c = plateau.getClosestCaseFromCryptidWith(biome);
         }
         if(iLieu == IndiceLieu.ELEMENT){
+            element = Element.getOneRandom();
             c = plateau.getClosestCaseFromCryptidWith(element);
         }
 
         distance = plateau.getDistanceFromCryptid(plateau.caseToPosition(c));
-        dilution = hazardeur.nextInt(1+(int)Math.round(distance/3));
+        dilution = hazardeur.nextInt(1+(int)Math.round(distance/2));
         if(distance==0)
             iPos = IndicePosition.POSITION;
 
         message = "Le cryptid se trouve "+iPos+" "+iLieu;
+
         switch (iPos){
             case MAX_DISTANCE:
                 distanceDiluee = distance+dilution;
@@ -71,7 +72,12 @@ public class Indice {
                 break;
             case POSITION:
                 message = "Le cryptid se trouve dans "+iLieu;
-                message = String.format(message, plateau.getMonstreBiome());
+                if(iLieu == IndiceLieu.ELEMENT){
+                    message = String.format(message, element);
+                }
+                if(iLieu == IndiceLieu.BIOME){
+                    message = String.format(message, biome);
+                }
                 break;
 
         }
