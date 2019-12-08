@@ -40,6 +40,8 @@ public class Cryptid extends JFrame implements ActionListener {
     public JPanel menuPartie;
     public JButton bPieceCubique;
     public JButton bPieceRonde;
+    public JButton bPasserTour;
+    public JButton bQuitterPartie;
 
     public Cryptid(){
         super("Cryptid");
@@ -72,6 +74,8 @@ public class Cryptid extends JFrame implements ActionListener {
         menuPartie = new JPanel();
         bPieceCubique = new JButton("Pièce cubique", Piece.PIECECUBIQUE);
         bPieceRonde = new JButton("Pièce ronde", Piece.PIECERONDE);
+        bPasserTour = new JButton("Tour suivant");
+        bQuitterPartie = new JButton("Quitter");
     }
 
     public void initWigets(){
@@ -79,6 +83,10 @@ public class Cryptid extends JFrame implements ActionListener {
 
         bJouer.addActionListener(menuController);
         bQuitter.addActionListener(menuController);
+        bQuitterPartie.addActionListener(menuController);
+        bPasserTour.addActionListener(menuController);
+        bPieceCubique.addActionListener(menuController);
+        bPieceRonde.addActionListener(menuController);
 
         fMenu.setLayout(new GridLayout(6,1));
         fPrincipale.add(fMenu);
@@ -96,10 +104,13 @@ public class Cryptid extends JFrame implements ActionListener {
         fConfig.add(bAddJoueur);
         fConfig.add(bLancerPartie);
 
-        menuPartie.setLayout(new BoxLayout(menuPartie, BoxLayout.Y_AXIS));
-        menuPartie.setSize(300,300);
-        menuPartie.add(bPieceCubique);
-        menuPartie.add(bPieceRonde);
+        //menuPartie.setLayout(new GridLayout(4,1));
+        //menuPartie.setSize(300,300);
+        //menuPartie.add(bPieceCubique);
+        //menuPartie.add(bPieceRonde);
+        //menuPartie.add(bPasserTour);
+        //menuPartie.add(bQuitterPartie);
+
     }
 
     public static void main(String[] args){
@@ -112,6 +123,10 @@ public class Cryptid extends JFrame implements ActionListener {
         panneauJeu = new DrawPane(this,plateau);
         jeuController = new JeuController(this);
         panneauJeu.addMouseListener(jeuController);
+        panneauJeu.add(bPieceCubique);
+        panneauJeu.add(bPieceRonde);
+        panneauJeu.add(bPasserTour);
+        panneauJeu.add(bQuitterPartie);
         this.fPrincipale.remove(this.fConfig);
         setContentPane(panneauJeu);
         fPrincipale.revalidate();
