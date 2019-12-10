@@ -11,7 +11,7 @@ import java.util.Random;
 public class Plateau {
     private int taille;
     private Random hazardeur;
-    private Point monstre;
+    protected Point monstre;
     private Case[][] cases;
 
     public Plateau(int taille){
@@ -89,7 +89,7 @@ public class Plateau {
     }
 
     public int getDistance(Point a, Point b){
-        return (int) Math.floor(Math.sqrt(Math.pow(b.x-a.x,2)+Math.pow(b.y-a.y,2)));
+        return (int) Math.abs(Math.floor(Math.sqrt(Math.pow(b.x-a.x,2)+Math.pow(b.y-a.y,2))));
     }
 
     public int getDistanceFromCryptid(Point a){
