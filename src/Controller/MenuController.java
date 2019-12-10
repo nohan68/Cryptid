@@ -2,6 +2,8 @@ package Controller;
 
 import Cryptid.Cryptid;
 import Modele.Joueur;
+import Modele.Plateau;
+import Modele.Types.Piece;
 
 import javax.swing.*;
 import java.awt.*;
@@ -11,6 +13,7 @@ import java.awt.event.ActionListener;
 
 public class MenuController implements ActionListener {
     Cryptid root;
+    Piece p;
 
     public MenuController(Cryptid root){
         this.root = root;
@@ -59,6 +62,25 @@ public class MenuController implements ActionListener {
 
             if(e.getSource() == root.bQuitter){
                 System.exit(0);
+            }
+
+            if(e.getSource() == root.bQuitterPartie){
+                System.exit(0);
+            }
+
+            if(e.getSource() == root.bPasserTour){
+                System.out.println("Tour passé");
+            }
+
+            if(e.getSource() == root.bPieceRonde){
+                root.bPieceRonde.setSelectedIcon(Piece.PIECERONDE);
+                System.out.println("Le joueur choisit une pièce ronde à placer");
+
+            }
+
+            if(e.getSource() == root.bPieceCubique){
+                root.bPieceCubique.setSelectedIcon(Piece.PIECECUBIQUE);
+                System.out.println("Le joueur choisit une pièce cubique à placer");
             }
 
         }
