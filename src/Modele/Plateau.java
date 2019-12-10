@@ -46,7 +46,7 @@ public class Plateau {
                     y = Math.abs(hzPos.y+j)%this.taille;
                     //System.out.println(x+ " "+y);
                     if(cases[x][y] == null){
-                        cases[x][y] = new Case(b, Element.getRandom());
+                        cases[x][y] = new Case(b, Element.getRandom(b));
                         casesPosees++;
                     }
                 }
@@ -83,6 +83,9 @@ public class Plateau {
 
     public Case getCase(int x, int y){
         return cases[x][y];
+    }
+    public Case getCase(Point p){
+        return cases[p.x][p.y];
     }
 
     public int getDistance(Point a, Point b){

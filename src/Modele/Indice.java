@@ -45,6 +45,7 @@ public class Indice {
 
         distance = plateau.getDistanceFromCryptid(plateau.caseToPosition(c));
         dilution = hazardeur.nextInt(1+(int)Math.round(distance/2));
+
         if(distance==0)
             iPos = IndicePosition.POSITION;
 
@@ -71,12 +72,12 @@ public class Indice {
 
                 break;
             case POSITION:
-                message = "Le cryptid se trouve dans "+iLieu;
+                message = "Le cryptid se trouve à l'interieur "+iLieu;
                 if(iLieu == IndiceLieu.ELEMENT){
-                    message = String.format(message, element);
+                    message = String.format(message, plateau.getMonstreBiome());
                 }
                 if(iLieu == IndiceLieu.BIOME){
-                    message = String.format(message, biome);
+                    message = String.format(message, plateau.getCase(plateau.getMonstre()).getBiome());
                 }
                 break;
 
@@ -88,5 +89,9 @@ public class Indice {
     @Override
     public String toString() {
         return this.message;
+    }
+
+    public boolean equals(Indice i){
+        return i.iLieu == this.iLieu && i.iPos == this.iPos && this.distanceDiluee == i.distanceDiluee;
     }
 }

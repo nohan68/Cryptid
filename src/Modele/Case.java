@@ -28,11 +28,15 @@ public class Case {
     }
 
     public String toFullString(){
-        String s = this.getClass() + " <"+this.hashCode()+">\nBiome: [ "+biome+" ] \nElements { ";
+        boolean contains = false;
+        String s = this.getClass() + " <"+this.hashCode()+">\nBiome: [ "+biome+" ] \nElements {";
         for(Element e : elements){
             s = s + " "+e+", ";
+            contains=true;
         }
-        s = s.substring(2,s.length()-2) + " }";
+        if(contains)
+            s = s.substring(0,s.length()-2);
+        s = s + " }";
         return s;
     }
 }
