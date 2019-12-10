@@ -23,7 +23,6 @@ public class JeuController implements ActionListener, MouseListener {
     @Override
     public void mousePressed(MouseEvent mouseEvent) {
         System.out.println(root.getPlateau().pixelToCase( mouseEvent.getPoint(), root.getPanneauJeu().getTailleCase()).toFullString() );
-        // TODO: Ajouter le jeton séléctionné à la liste des jetons sur la case
         Case c = root.getPlateau().pixelToCase( mouseEvent.getPoint(), root.getPanneauJeu().getTailleCase());
         Piece p = Piece.pieceSelectionnee;
         c.getPieces().add(p);
