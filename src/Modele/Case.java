@@ -29,7 +29,7 @@ public class Case {
 
     public String toFullString(){
         boolean contains = false;
-        String s = this.getClass() + " <"+this.hashCode()+">\nBiome: [ "+biome+" ] \nElements {";
+        String s = this.getClass() + " <"+this.hashCode()+">\nBiome : [ "+biome+" ] \nElements {";
         for(Element e : elements){
             s = s + " "+e+", ";
             contains=true;
