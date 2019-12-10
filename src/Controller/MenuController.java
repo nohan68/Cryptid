@@ -2,8 +2,7 @@ package Controller;
 
 import Cryptid.Cryptid;
 import Modele.Joueur;
-import Modele.Plateau;
-import Modele.Types.Piece;
+import Modele.Types.TypePiece;
 
 import javax.swing.*;
 import java.awt.*;
@@ -13,7 +12,9 @@ import java.awt.event.ActionListener;
 
 public class MenuController implements ActionListener {
     Cryptid root;
-    Piece p;
+    TypePiece p;
+
+    int tempNombreJoueur = 0;
 
     public MenuController(Cryptid root){
         this.root = root;
@@ -29,8 +30,8 @@ public class MenuController implements ActionListener {
             }
 
             if (e.getSource() == root.bAddJoueur) {
-                Joueur.nJoueurs++;
-                root.bLancerPartie.setEnabled(Joueur.nJoueurs > 2);
+                tempNombreJoueur++;
+                root.bLancerPartie.setEnabled(tempNombreJoueur > 2);
 
                 JPanel nouveauPanneau = new JPanel();
                 JButton bSupprimer = new JButton("X");
@@ -49,8 +50,8 @@ public class MenuController implements ActionListener {
             }
 
             if (((JButton) e.getSource()).getText().equals("X")) {
-                Joueur.nJoueurs--;
-                root.bLancerPartie.setEnabled(Joueur.nJoueurs > 2);
+                tempNombreJoueur--;
+                root.bLancerPartie.setEnabled(tempNombreJoueur > 2);
                 root.fConfig.remove(((JButton) e.getSource()).getParent());
                 root.revalidate();
                 root.fConfig.revalidate();
@@ -73,16 +74,22 @@ public class MenuController implements ActionListener {
             }
 
             if(e.getSource() == root.bPieceRonde){
-                //root.bPieceRonde.setSelectedIcon(Piece.PIECERONDE);
-                Piece.pieceSelectionnee = Piece.PIECERONDE;
+                //root.bPieceRonde.setSelectedIcon(TypePiece.PIECERONDE);
+                TypePiece.typePieceSelectionnee = TypePiece.PIECERONDE;
                 System.out.println("Le joueur choisit une pièce ronde à placer");
 
             }
 
             if(e.getSource() == root.bPieceCubique){
-                //root.bPieceCubique.setSelectedIcon(Piece.PIECECUBIQUE);
-                Piece.pieceSelectionnee = Piece.PIECECUBIQUE;
+                //root.bPieceCubique.setSelectedIcon(TypePiece.PIECECUBIQUE);
+                TypePiece.typePieceSelectionnee = TypePiece.PIECECUBIQUE;
                 System.out.println("Le joueur choisit une pièce cubique à placer");
+            }
+
+            if(e.getSource() == root.bPasserTour){
+                //root.bPieceCubique.setSelectedIcon(TypePiece.PIECECUBIQUE);
+                Joueur.joueurSuivant();
+                System.out.println("Tour suivant");
             }
 
         }

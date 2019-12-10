@@ -2,7 +2,9 @@ package Controller;
 
 import Cryptid.Cryptid;
 import Modele.Case;
-import Modele.Types.Piece;
+import Modele.Joueur;
+import Modele.Piece;
+import Modele.Types.TypePiece;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -22,10 +24,12 @@ public class JeuController implements ActionListener, MouseListener {
 
     @Override
     public void mousePressed(MouseEvent mouseEvent) {
-        System.out.println(root.getPlateau().pixelToCase( mouseEvent.getPoint(), root.getPanneauJeu().getTailleCase()).toFullString() );
-        Case c = root.getPlateau().pixelToCase( mouseEvent.getPoint(), root.getPanneauJeu().getTailleCase());
-        Piece p = Piece.pieceSelectionnee;
-        c.getPieces().add(p);
+        if(mouseEvent.getButton() == MouseEvent.BUTTON1) {
+            Case c = root.getPlateau().pixelToCase(mouseEvent.getPoint(), root.getPanneauJeu().getTailleCase());
+            TypePiece tp = TypePiece.typePieceSelectionnee;
+            c.addPiece(new Piece(tp,Joueur.getJoueurActuel()));
+            System.out.println(root.getPlateau().pixelToCase(mouseEvent.getPoint(), root.getPanneauJeu().getTailleCase()).toFullString());
+        }
     }
 
     @Override

@@ -5,17 +5,16 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.io.File;
-import java.util.*;
 
-public enum Piece implements Icon {
+public enum TypePiece implements Icon {
     PIECECUBIQUE("../Ressources/cube.png"),
     PIECERONDE("../Ressources/rond.png");
 
-    public static Piece pieceSelectionnee = PIECECUBIQUE;
+    public static TypePiece typePieceSelectionnee = PIECECUBIQUE;
 
     private final BufferedImage image;
 
-    Piece(String filename) {
+    TypePiece(String filename) {
         BufferedImage tempImage;
         try {
             tempImage = ImageIO.read(new File(filename));

@@ -2,9 +2,10 @@ package Cryptid;
 
 import Modele.Case;
 import Modele.Images;
+import Modele.Piece;
 import Modele.Types.Element;
 import Modele.Plateau;
-import Modele.Types.Piece;
+import Modele.Types.TypePiece;
 
 import javax.swing.*;
 import java.awt.*;
@@ -12,9 +13,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.Color;
 import java.awt.Graphics;
-import java.util.Random;
 import javax.swing.JPanel;
-import static Modele.Types.Biome.*;
 
 public class DrawPane extends JPanel implements ActionListener {
     private Point tailleCase;
@@ -171,14 +170,18 @@ public class DrawPane extends JPanel implements ActionListener {
                     }
 
                 }
-
+                Point decalageRect = new Point(Math.round(tailleCase.x/4),Math.round(tailleCase.y/4));
                 for(Piece pi : laCase.getPieces()){
-                    switch(pi){
+                    switch(pi.getTypePiece()){
                         case PIECECUBIQUE:
-                            g.drawImage(Images.imgPieceCubique, i + delta.x, j + delta.y, tailleCase.x, tailleCase.y, this);
+                            //g.drawImage(Images.imgPieceCubique, i + delta.x, j + delta.y, tailleCase.x, tailleCase.y, this);
+                            g.setColor(pi.getProprietaire().getCouleur());
+                            g.drawRect(i+delta.x+decalageRect.x, j+delta.y+decalageRect.y, tailleCase.x-(decalageRect.x*2), tailleCase.y-(decalageRect.y*2));
                             break;
                         case PIECERONDE:
-                            g.drawImage(Images.imgPieceRonde, i + delta.x, j + delta.y, tailleCase.x, tailleCase.y, this);
+                            //g.drawImage(Images.imgPieceRonde, i + delta.x, j + delta.y, tailleCase.x, tailleCase.y, this);
+                            g.setColor(pi.getProprietaire().getCouleur());
+                            g.drawOval(i+delta.x, j+delta.y, tailleCase.x, tailleCase.y);
                             break;
                     }
                 }

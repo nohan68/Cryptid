@@ -3,7 +3,8 @@ package Cryptid;
 import Controller.JeuController;
 import Controller.MenuController;
 import Modele.Indice;
-import Modele.Types.Piece;
+import Modele.Joueur;
+import Modele.Types.TypePiece;
 import Modele.Plateau;
 
 import javax.swing.*;
@@ -72,8 +73,8 @@ public class Cryptid extends JFrame implements ActionListener {
         bLancerPartie=new JButton("Lancer !");
 
         menuPartie = new JPanel();
-        bPieceCubique = new JButton("Pièce cubique", Piece.PIECECUBIQUE);
-        bPieceRonde = new JButton("Pièce ronde", Piece.PIECERONDE);
+        bPieceCubique = new JButton("Pièce cubique", TypePiece.PIECECUBIQUE);
+        bPieceRonde = new JButton("Pièce ronde", TypePiece.PIECERONDE);
         bPasserTour = new JButton("Tour suivant");
         bQuitterPartie = new JButton("Quitter");
     }
@@ -132,6 +133,41 @@ public class Cryptid extends JFrame implements ActionListener {
         fPrincipale.revalidate();
         revalidate();
         fPrincipale.repaint();
+
+        String nom="";
+        String couleurstr="";
+        Color couleur=Color.WHITE;
+        //Création des joueurs
+        for(Component jc : fConfig.getComponents()){
+            if(jc instanceof JPanel){
+                for(Component element : ((JPanel) jc).getComponents()){
+                    if(element instanceof JTextField){
+                        nom = ((JTextField) element).getText();
+                    }
+                    if(element instanceof JComboBox){
+                         couleurstr=""+((JComboBox)element).getSelectedItem();
+                    }
+                }
+                switch (couleurstr){
+                    case "Rouge":
+                        couleur = Color.RED;
+                        break;
+                    case "Vert":
+                        couleur = Color.GREEN;
+                        break;
+                    case "Bleu":
+                        couleur = Color.BLUE;
+                        break;
+                    case "Jaune":
+                        couleur = Color.YELLOW;
+                        break;
+                    case "Rose":
+                        couleur = Color.PINK;
+                        break;
+                }
+                new Joueur(nom, couleur);
+            }
+        }
         for(int i=0;i<10;i++){
             System.out.println(new Indice(plateau));
         }

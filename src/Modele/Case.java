@@ -2,7 +2,7 @@ package Modele;
 
 import Modele.Types.Biome;
 import Modele.Types.Element;
-import Modele.Types.Piece;
+import Modele.Types.TypePiece;
 
 import java.util.ArrayList;
 
@@ -29,6 +29,10 @@ public class Case {
         return pieces;
     }
 
+    public void addPiece(Piece p){
+        pieces.add(p);
+    }
+
     @Override
     public String toString() {
         return " ["+this.biome+ " | "+this.elements.size()+ " ]";
@@ -47,7 +51,7 @@ public class Case {
         s = s + " }\nPieces : {";
 
         for(Piece piece : this.pieces){
-            s = s + " "+piece+", ";
+            s = s + " "+ piece +", ";
             containsPiece=true;
         }
         if(containsPiece)
