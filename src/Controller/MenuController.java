@@ -73,13 +73,15 @@ public class MenuController implements ActionListener {
             }
 
             if(e.getSource() == root.bPieceRonde){
-                root.bPieceRonde.setSelectedIcon(Piece.PIECERONDE);
+                //root.bPieceRonde.setSelectedIcon(Piece.PIECERONDE);
+                Piece.pieceSelectionnee = Piece.PIECERONDE;
                 System.out.println("Le joueur choisit une pièce ronde à placer");
 
             }
 
             if(e.getSource() == root.bPieceCubique){
-                root.bPieceCubique.setSelectedIcon(Piece.PIECECUBIQUE);
+                //root.bPieceCubique.setSelectedIcon(Piece.PIECECUBIQUE);
+                Piece.pieceSelectionnee = Piece.PIECECUBIQUE;
                 System.out.println("Le joueur choisit une pièce cubique à placer");
             }
 

@@ -18,6 +18,8 @@ public class Images
     public static Image imgSapin;
     public static Image imgAnimaux;
     public static Image imgEtang;
+    public static Image imgPieceCubique;
+    public static Image imgPieceRonde;
     static {
         try {
             imgArbre = ImageIO.read(new File("src/Ressources/arbre.png"));
@@ -31,6 +33,8 @@ public class Images
             imgSapin = ImageIO.read(new File("src/Ressources/sapin.webp"));
             imgAnimaux = ImageIO.read(new File("src/Ressources/animaux.png"));
             imgEtang = ImageIO.read(new File("src/Ressources/etang.png"));
+            imgPieceCubique = ImageIO.read(new File("src/Ressources/cube.png"));
+            imgPieceRonde = ImageIO.read(new File("src/Ressources/rond.png"));
         } catch (IOException exc) {
             exc.printStackTrace();
         }

@@ -11,6 +11,8 @@ public enum Piece implements Icon {
     PIECECUBIQUE("../Ressources/cube.png"),
     PIECERONDE("../Ressources/rond.png");
 
+    public static Piece pieceSelectionnee = PIECECUBIQUE;
+
     private final BufferedImage image;
 
     Piece(String filename) {

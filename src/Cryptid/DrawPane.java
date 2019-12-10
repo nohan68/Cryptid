@@ -4,6 +4,7 @@ import Modele.Case;
 import Modele.Images;
 import Modele.Types.Element;
 import Modele.Plateau;
+import Modele.Types.Piece;
 
 import javax.swing.*;
 import java.awt.*;
@@ -169,6 +170,17 @@ public class DrawPane extends JPanel implements ActionListener {
                             break;
                     }
 
+                }
+
+                for(Piece pi : laCase.getPieces()){
+                    switch(pi){
+                        case PIECECUBIQUE:
+                            g.drawImage(Images.imgPieceCubique, i + delta.x, j + delta.y, tailleCase.x, tailleCase.y, this);
+                            break;
+                        case PIECERONDE:
+                            g.drawImage(Images.imgPieceRonde, i + delta.x, j + delta.y, tailleCase.x, tailleCase.y, this);
+                            break;
+                    }
                 }
 
             }
