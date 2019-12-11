@@ -69,10 +69,6 @@ public class MenuController implements ActionListener {
                 System.exit(0);
             }
 
-            if(e.getSource() == root.bPasserTour){
-                System.out.println("Tour passé");
-            }
-
             if(e.getSource() == root.bPieceRonde){
                 //root.bPieceRonde.setSelectedIcon(TypePiece.PIECERONDE);
                 TypePiece.typePieceSelectionnee = TypePiece.PIECERONDE;

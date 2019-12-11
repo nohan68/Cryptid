@@ -9,9 +9,11 @@ public class Joueur {
 
     private String nom;
     private Color  couleur;
+    private double taille;
 
     static public void joueurSuivant(){
-        idJoueurActuel = idJoueurActuel++%getNombreJoueurs();
+        idJoueurActuel = (idJoueurActuel+1)%getNombreJoueurs();
+        System.out.println("joueurActuel: "+idJoueurActuel + "\nNombredejoueurs: "+getNombreJoueurs());
     }
 
     public Joueur(String nom, Color couleur){
@@ -21,6 +23,9 @@ public class Joueur {
         if(this.nom.equals("")){
             this.nom="Joueur "+getNombreJoueurs();
         }
+
+        this.taille = 1/(4+(double)getNombreJoueurs())*2;
+        System.out.println(this.taille);
         System.out.println("Nouveau Joueur <"+this.toString()+">");
     }
 
@@ -34,6 +39,10 @@ public class Joueur {
 
     public static int getNombreJoueurs() {
         return Joueur.joueurs.size();
+    }
+
+    public Point getTaille(Point tailleCase){
+        return new Point((int) Math.round(tailleCase.x*this.taille),(int) Math.round(tailleCase.y*this.taille));
     }
 
     public String getNom(){

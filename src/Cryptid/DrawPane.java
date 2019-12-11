@@ -1,10 +1,7 @@
 package Cryptid;
 
-import Modele.Case;
-import Modele.Images;
-import Modele.Piece;
+import Modele.*;
 import Modele.Types.Element;
-import Modele.Plateau;
 import Modele.Types.TypePiece;
 
 import javax.swing.*;
@@ -176,12 +173,30 @@ public class DrawPane extends JPanel implements ActionListener {
                         case PIECECUBIQUE:
                             //g.drawImage(Images.imgPieceCubique, i + delta.x, j + delta.y, tailleCase.x, tailleCase.y, this);
                             g.setColor(pi.getProprietaire().getCouleur());
-                            g.drawRect(i+delta.x+decalageRect.x, j+delta.y+decalageRect.y, tailleCase.x-(decalageRect.x*2), tailleCase.y-(decalageRect.y*2));
+                            /*
+                            g.drawRect(
+                                        i+delta.x+decalageRect.x,
+                                        j+delta.y+decalageRect.y,
+                                        tailleCase.x-(decalageRect.x*2),
+                                        tailleCase.y-(decalageRect.y*2)
+                            );
+                             */
+                            g.drawRect(
+                                    i+delta.x+pi.getProprietaire().getTaille(tailleCase).x,
+                                    j+delta.y+pi.getProprietaire().getTaille(tailleCase).y,
+                                    tailleCase.x-(pi.getProprietaire().getTaille(tailleCase).x*2),
+                                    tailleCase.y-(pi.getProprietaire().getTaille(tailleCase).y*2)
+                            );
                             break;
                         case PIECERONDE:
                             //g.drawImage(Images.imgPieceRonde, i + delta.x, j + delta.y, tailleCase.x, tailleCase.y, this);
                             g.setColor(pi.getProprietaire().getCouleur());
-                            g.drawOval(i+delta.x, j+delta.y, tailleCase.x, tailleCase.y);
+                            g.drawOval(
+                                    i+delta.x+pi.getProprietaire().getTaille(tailleCase).x,
+                                    j+delta.y+pi.getProprietaire().getTaille(tailleCase).y,
+                                    tailleCase.x-(pi.getProprietaire().getTaille(tailleCase).x*2),
+                                    tailleCase.y-(pi.getProprietaire().getTaille(tailleCase).y*2)
+                            );
                             break;
                     }
                 }
