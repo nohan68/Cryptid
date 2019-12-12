@@ -24,11 +24,17 @@ public class JeuController implements ActionListener, MouseListener {
 
     @Override
     public void mousePressed(MouseEvent mouseEvent) {
+        Case c = root.getPlateau().pixelToCase(mouseEvent.getPoint(), root.getPanneauJeu().getTailleCase());
         if(mouseEvent.getButton() == MouseEvent.BUTTON1) {
-            Case c = root.getPlateau().pixelToCase(mouseEvent.getPoint(), root.getPanneauJeu().getTailleCase());
             TypePiece tp = TypePiece.typePieceSelectionnee;
-            c.addPiece(new Piece(tp,Joueur.getJoueurActuel()));
+            if (c.getPieces(Joueur.getJoueurActuel()).size() < 1) {
+                c.addPiece(new Piece(tp, Joueur.getJoueurActuel()));
+            }
             System.out.println(root.getPlateau().pixelToCase(mouseEvent.getPoint(), root.getPanneauJeu().getTailleCase()).toFullString());
+        }
+
+        if(mouseEvent.getButton() == MouseEvent.BUTTON3){
+            c.delPiece(c.getPieces(Joueur.getJoueurActuel()));
         }
     }
 

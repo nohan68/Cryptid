@@ -32,6 +32,17 @@ public class Case {
     public void addPiece(Piece p){
         pieces.add(p);
     }
+    public void delPiece(Piece p) { pieces.remove(p);}
+    public void delPiece(ArrayList<Piece> p) { pieces.removeAll(p); }
+
+    public ArrayList<Piece> getPieces(Joueur j){
+        ArrayList<Piece> tempList = new ArrayList<>();
+        for(Piece p : pieces){
+            if(p.getProprietaire() == j)
+                tempList.add(p);
+        }
+        return tempList;
+    }
 
     @Override
     public String toString() {

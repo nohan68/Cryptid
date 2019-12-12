@@ -10,6 +10,7 @@ public class Joueur {
     private String nom;
     private Color  couleur;
     private double taille;
+    private ArrayList<Indice> indices;
 
     static public void joueurSuivant(){
         idJoueurActuel = (idJoueurActuel+1)%getNombreJoueurs();
@@ -25,6 +26,7 @@ public class Joueur {
         }
 
         this.taille = 1/(4+(double)getNombreJoueurs())*2;
+        this.indices = new ArrayList<>();
         System.out.println(this.taille);
         System.out.println("Nouveau Joueur <"+this.toString()+">");
     }
@@ -40,6 +42,12 @@ public class Joueur {
     public static int getNombreJoueurs() {
         return Joueur.joueurs.size();
     }
+
+    public Indice getDernierIndice(){ return indices.get(indices.size()-1); }
+
+    public void donnerIndice(Indice i){ indices.add(i);}
+    public void donnerIndices(ArrayList<Indice> i){ indices.addAll(i);}
+    public ArrayList<Indice> getIndices(){return new ArrayList<Indice>(this.indices);}
 
     public Point getTaille(Point tailleCase){
         return new Point((int) Math.round(tailleCase.x*this.taille),(int) Math.round(tailleCase.y*this.taille));
