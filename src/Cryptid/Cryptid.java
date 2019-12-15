@@ -165,12 +165,12 @@ public class Cryptid extends JFrame implements ActionListener {
                         couleur = Color.PINK;
                         break;
                 }
-                new Joueur(nom, couleur);
+                Joueur j = new Joueur(nom, couleur);
+                j.donnerIndice(new Indice(plateau));
             }
         }
-        for(int i=0;i<10;i++){
-            System.out.println(new Indice(plateau));
-        }
+        new Notice(Joueur.getJoueurActuel());
+        new Notice("La chasse au cryptid est ouverte !");
 
     }
 

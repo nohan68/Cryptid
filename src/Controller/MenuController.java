@@ -1,7 +1,9 @@
 package Controller;
 
 import Cryptid.Cryptid;
+import Modele.Indice;
 import Modele.Joueur;
+import Cryptid.Notice;
 import Modele.Types.TypePiece;
 
 import javax.swing.*;
@@ -85,6 +87,8 @@ public class MenuController implements ActionListener {
             if(e.getSource() == root.bPasserTour){
                 //root.bPieceCubique.setSelectedIcon(TypePiece.PIECECUBIQUE);
                 Joueur.joueurSuivant();
+                Joueur.getJoueurActuel().donnerIndice(new Indice(root.getPlateau()));
+                new Notice(Joueur.getJoueurActuel());
                 System.out.println("Tour suivant");
             }
 
