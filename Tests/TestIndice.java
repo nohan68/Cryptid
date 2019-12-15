@@ -5,7 +5,7 @@ import org.junit.Test;
 public class TestIndice {
 
     @Test
-    public void TestIndice(){
+    public void TestPresenceIndice(){
         Plateau p = new Plateau(12);
         Indice indice;
         for(int i=0; i<10;i++){
