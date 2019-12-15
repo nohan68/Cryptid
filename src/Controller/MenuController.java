@@ -79,7 +79,7 @@ public class MenuController implements ActionListener {
             }
 
             if(e.getSource() == root.bPieceCubique){
-                //root.bPieceCubique.setSelectedIcon(TypePiece.PIECECUBIQUE);
+                //root.bPieceCubique.setSelectedIcon(TypePiece.PIECECUBIQUE) ;
                 TypePiece.typePieceSelectionnee = TypePiece.PIECECUBIQUE;
                 System.out.println("Le joueur choisit une pièce cubique à placer");
             }
