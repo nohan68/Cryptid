@@ -99,8 +99,11 @@ public class Plateau {
 
     public boolean verifDistanceAvecMonstre(Case c){
         if(c == getCase(monstre.x, monstre.y)){
+            this.isMonstreTrouve = true;
             return true;
         }
+        else
+            this.isMonstreTrouve = false;
         return false;
     }
 

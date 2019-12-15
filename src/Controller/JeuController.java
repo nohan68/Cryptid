@@ -28,7 +28,6 @@ public class JeuController implements ActionListener, MouseListener {
     @Override
     public void mousePressed(MouseEvent mouseEvent) {
         Case c = root.getPlateau().pixelToCase(mouseEvent.getPoint(), root.getPanneauJeu().getTailleCase());
-        System.out.println(c);
         if(mouseEvent.getButton() == MouseEvent.BUTTON1) {
             TypePiece tp = TypePiece.typePieceSelectionnee;
             if (c.getPieces(Joueur.getJoueurActuel()).size() < 1) {
@@ -36,14 +35,13 @@ public class JeuController implements ActionListener, MouseListener {
                 if(tp == TypePiece.PIECERONDE){
                     new Notice(Joueur.getJoueurActuel(), tp);
                     System.out.println(Joueur.getJoueurActuel() + " décide de creuser");
+
                     if(p.verifDistanceAvecMonstre(c)){
                         System.out.println("trouvé");
-                        p.isMonstreTrouve = true;
                         new Notice(Joueur.getJoueurActuel(), "Le joueur " + Joueur.getJoueurActuel() + " remporte à trouvé le monstre. Il remporte la partie !");
                     }
                     else{
                         System.out.println("raté");
-                        p.isMonstreTrouve = false;
                         new Notice(Joueur.getJoueurActuel(), "C'est raté !");
                     }
                 }
