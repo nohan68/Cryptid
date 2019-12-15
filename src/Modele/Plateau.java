@@ -11,8 +11,9 @@ import java.util.Random;
 public class Plateau {
     private int taille;
     private Random hazardeur;
-    protected Point monstre;
+    public Point monstre;
     private Case[][] cases;
+    public boolean isMonstreTrouve = false;
 
     public Plateau(int taille){
         this.taille = taille;
@@ -96,6 +97,12 @@ public class Plateau {
         return getDistance(a,this.monstre);
     }
 
+    public boolean verifDistanceAvecMonstre(Case c){
+        if(c == getCase(monstre.x, monstre.y)){
+            return true;
+        }
+        return false;
+    }
 
     public Case getClosestCaseFromCryptidWith(Element e){
         int min_distance = taille;

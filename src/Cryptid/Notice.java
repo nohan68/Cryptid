@@ -3,6 +3,8 @@ package Cryptid;
 import Controller.NoticeController;
 import Modele.Indice;
 import Modele.Joueur;
+import Modele.Plateau;
+import Modele.Types.TypePiece;
 
 import javax.swing.*;
 import java.awt.*;
@@ -11,10 +13,14 @@ import java.util.ArrayList;
 public class Notice extends JFrame {
     private final static String titre = "Cryptid - Notice";
 
-    private JLabel  lMessage;
+    private JLabel lMessage;
     public JButton bOk;
     public JButton bIndices;
     public JButton bToggleMask;
+    public JButton bRecommencer;
+    public JButton bQuitter;
+    public JButton bCreuser;
+    public JButton bNon;
 
     private JPanel jpMain;
     private JPanel jpMessage;
@@ -23,6 +29,7 @@ public class Notice extends JFrame {
     private boolean indicesAffichees;
     private String message;
     public Joueur j;
+    public Plateau p;
 
     private NoticeController noticeController;
 
@@ -31,6 +38,10 @@ public class Notice extends JFrame {
         lMessage = new JLabel();
         bIndices = new JButton("Voir tout mes indices");
         bToggleMask = new JButton("Afficher/Cacher");
+        bRecommencer = new JButton("Recommencer ?");
+        bQuitter = new JButton("Quitter");
+        bCreuser = new JButton("Creuser");
+        bNon = new JButton("Non");
 
         jpMain = new JPanel();
         jpBouttons = new JPanel();
@@ -49,6 +60,9 @@ public class Notice extends JFrame {
         bOk.addActionListener(noticeController);
         bIndices.addActionListener(noticeController);
         bToggleMask.addActionListener(noticeController);
+        bCreuser.addActionListener(noticeController);
+        bNon.addActionListener(noticeController);
+
     }
 
     public void toggleAffIndice(){
@@ -89,9 +103,31 @@ public class Notice extends JFrame {
         jpBouttons.add(bIndices);
         jpBouttons.add(bToggleMask);
         message = "<html>" + j.getNom() + " c'est à vous de jouer !" + ""+
-                "<br>Cliquez sur afficher pour voire votre indice<br></html>";
+                "<br>Cliquez sur afficher pour voir votre indice<br></html>";
         lMessage.setText(message);
 
+    }
+
+    public Notice(Joueur j, TypePiece tp){
+        this();
+        this.j = j;
+        jpBouttons.add(bCreuser);
+        jpBouttons.add(bNon);
+        message = j.getNom() + " vous pouvez creuser !";
+        lMessage.setText(message);
+    }
+
+    public Notice(Joueur j, String msg){
+        this();
+        this.j = j;
+        lMessage.setText(msg);
+        if(p.isMonstreTrouve){
+            jpBouttons.add(bRecommencer);
+            jpBouttons.add(bQuitter);
+        }
+        else{
+
+        }
     }
 
     public Notice(ArrayList<Indice> indices){
