@@ -47,7 +47,7 @@ public class NoticeController implements ActionListener {
             }
 
             if(e.getSource() == root.bRecommencer){
-                c.lancerPartie();
+
             }
         }
     }

@@ -15,7 +15,6 @@ import java.awt.event.MouseListener;
 
 public class JeuController implements ActionListener, MouseListener {
      Cryptid root;
-     public Plateau p;
 
     public JeuController(Cryptid root){
         this.root = root;
@@ -35,14 +34,17 @@ public class JeuController implements ActionListener, MouseListener {
                 if(tp == TypePiece.PIECERONDE){
                     new Notice(Joueur.getJoueurActuel(), tp);
                     System.out.println(Joueur.getJoueurActuel() + " décide de creuser");
-
-                    if(p.verifDistanceAvecMonstre(c)){
+                    if(root.getPlateau().verifDistanceAvecMonstre(c)){
                         System.out.println("trouvé");
-                        new Notice(Joueur.getJoueurActuel(), "Le joueur " + Joueur.getJoueurActuel() + " remporte à trouvé le monstre. Il remporte la partie !");
+                        new Notice(Joueur.getJoueurActuel(), "Le joueur " + Joueur.getJoueurActuel().getNom() + " remporte à trouvé le monstre. Il remporte la partie !", 1);
+                        root.bPieceCubique.setEnabled(false);
+                        root.bPieceRonde.setEnabled(false);
+                        root.bPasserTour.setEnabled(false);
+                        TypePiece.typePieceSelectionnee = TypePiece.PIECECUBIQUE;
                     }
                     else{
                         System.out.println("raté");
-                        new Notice(Joueur.getJoueurActuel(), "C'est raté !");
+                        new Notice("C'est raté !");
                     }
                 }
             }

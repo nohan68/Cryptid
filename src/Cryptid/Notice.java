@@ -30,6 +30,7 @@ public class Notice extends JFrame {
     private String message;
     public Joueur j;
     public Plateau p;
+    public Cryptid root;
 
     private NoticeController noticeController;
 
@@ -62,6 +63,8 @@ public class Notice extends JFrame {
         bToggleMask.addActionListener(noticeController);
         bCreuser.addActionListener(noticeController);
         bNon.addActionListener(noticeController);
+        bRecommencer.addActionListener(noticeController);
+        bQuitter.addActionListener(noticeController);
 
     }
 
@@ -117,17 +120,12 @@ public class Notice extends JFrame {
         lMessage.setText(message);
     }
 
-    public Notice(Joueur j, String msg){
+    public Notice(Joueur j, String msg, int nb){
         this();
         this.j = j;
         lMessage.setText(msg);
-        if(p.isMonstreTrouve){
-            jpBouttons.add(bRecommencer);
-            jpBouttons.add(bQuitter);
-        }
-        else{
-
-        }
+        //jpBouttons.add(bRecommencer);
+        jpBouttons.add(bQuitter);
     }
 
     public Notice(ArrayList<Indice> indices){

@@ -183,6 +183,10 @@ public class Cryptid extends JFrame implements ActionListener {
         return plateau;
     }
 
+    public void vider(){
+        this.removeAll();
+    }
+
     public DrawPane getPanneauJeu(){
         return panneauJeu;
     }
