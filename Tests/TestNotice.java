@@ -2,6 +2,7 @@ import Cryptid.Notice;
 import Modele.Indice;
 import Modele.Joueur;
 import Modele.Plateau;
+import org.junit.Assert;
 import org.junit.Test;
 
 import java.awt.*;

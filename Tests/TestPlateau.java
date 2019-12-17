@@ -4,7 +4,7 @@ import org.junit.Test;
 
 public class TestPlateau {
     @Test
-    public void testCreerPlateau(){
+    public void testTaillePlateau(){
         Plateau p = new Plateau(12);
         Assert.assertEquals(p.getTaille(), 12);
     }
