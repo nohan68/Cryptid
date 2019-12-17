@@ -49,19 +49,25 @@ public class JeuController implements ActionListener, MouseListener {
                     }
                 }
             }
-            System.out.println(root.getPlateau().pixelToCase(mouseEvent.getPoint(), root.getPanneauJeu().getTailleCase()).toFullString());
+            if(!partieFinie){
+                Joueur.joueurSuivant();
+                Indice i = new Indice(root.getPlateau());
+                while(Joueur.getJoueurActuel().hasIndice(i)){
+                    i = new Indice(root.getPlateau());
+                }
+                Joueur.getJoueurActuel().donnerIndice(i);
+                new Notice(Joueur.getJoueurActuel());
+                System.out.println("Tour suivant");
+                System.out.println(Joueur.getJoueurActuel().getIndices());
+            }
+            //System.out.println(root.getPlateau().pixelToCase(mouseEvent.getPoint(), root.getPanneauJeu().getTailleCase()).toFullString());
         }
 
         if(mouseEvent.getButton() == MouseEvent.BUTTON3){
             c.delPiece(c.getPieces(Joueur.getJoueurActuel()));
         }
 
-        if(!partieFinie){
-            Joueur.joueurSuivant();
-            Joueur.getJoueurActuel().donnerIndice(new Indice(root.getPlateau()));
-            new Notice(Joueur.getJoueurActuel());
-            System.out.println("Tour suivant");
-        }
+
     }
 
     @Override

@@ -53,6 +53,14 @@ public class Joueur {
         return new Point((int) Math.round(tailleCase.x*this.taille),(int) Math.round(tailleCase.y*this.taille));
     }
 
+    public boolean hasIndice(Indice i){
+        boolean r = true;
+        for(Indice indice : indices){
+            r = r&&!i.equals(indice);
+        }
+        return !r;
+    }
+
     public String getNom(){
         return this.nom;
     }

@@ -126,7 +126,7 @@ public class DrawPane extends JPanel implements ActionListener {
 
                 if(new Point(i/tailleCase.x,j/tailleCase.y).equals(plateau.getMonstre())){
                     g.setColor(Color.BLACK);
-                    g.fillOval(i+delta.x,j+delta.y,tailleCase.x,tailleCase.y);
+                    //g.fillOval(i+delta.x,j+delta.y,tailleCase.x,tailleCase.y);
                 }
 
                 for(Element e : laCase.getElements()){

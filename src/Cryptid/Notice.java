@@ -128,11 +128,13 @@ public class Notice extends JFrame {
 
     public Notice(ArrayList<Indice> indices){
         this();
-        String s = "<html> ";
+        String s = "<html>";
         for(Indice i : indices){
-            s = " " + i + "<br>";
+            s = s + " " + i + "<br>";
         }
         s = s + "</html>";
         lMessage.setText(s);
     }
+
+
 }
