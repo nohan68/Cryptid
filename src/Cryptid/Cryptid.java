@@ -13,8 +13,8 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 public class Cryptid extends JFrame implements ActionListener {
-    public static int WIDTH  = 1000;
-    public static int HEIGHT = 1000;
+    public static int WIDTH  = 800;
+    public static int HEIGHT = 800;
 
     private int vitesseActualisation = 1000;
 
@@ -37,8 +37,8 @@ public class Cryptid extends JFrame implements ActionListener {
 
     private Timer updater;
 
-
     public JPanel menuPartie;
+    public JButton bAfficherIndice;
     public JButton bPieceCubique;
     public JButton bPieceRonde;
     public JButton bPasserTour;
@@ -73,6 +73,7 @@ public class Cryptid extends JFrame implements ActionListener {
         bLancerPartie=new JButton("Lancer !");
 
         menuPartie = new JPanel();
+        bAfficherIndice = new JButton("Afficher l'indice");
         bPieceCubique = new JButton("Pièce cubique", TypePiece.PIECECUBIQUE);
         bPieceRonde = new JButton("Pièce ronde", TypePiece.PIECERONDE);
         bPasserTour = new JButton("Tour suivant");
@@ -88,6 +89,7 @@ public class Cryptid extends JFrame implements ActionListener {
         bPasserTour.addActionListener(menuController);
         bPieceCubique.addActionListener(menuController);
         bPieceRonde.addActionListener(menuController);
+        bAfficherIndice.addActionListener(menuController);
 
         fMenu.setLayout(new GridLayout(6,1));
         fPrincipale.add(fMenu);
@@ -124,6 +126,7 @@ public class Cryptid extends JFrame implements ActionListener {
         panneauJeu = new DrawPane(this,plateau);
         jeuController = new JeuController(this);
         panneauJeu.addMouseListener(jeuController);
+        panneauJeu.add(bAfficherIndice);
         panneauJeu.add(bPieceCubique);
         panneauJeu.add(bPieceRonde);
         panneauJeu.add(bPasserTour);

@@ -40,6 +40,7 @@ public class JeuController implements ActionListener, MouseListener {
                         root.bPieceCubique.setEnabled(false);
                         root.bPieceRonde.setEnabled(false);
                         root.bPasserTour.setEnabled(false);
+                        root.bAfficherIndice.setEnabled(false);
                         TypePiece.typePieceSelectionnee = TypePiece.PIECECUBIQUE;
                     }
 

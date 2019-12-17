@@ -71,6 +71,10 @@ public class MenuController implements ActionListener {
                 System.exit(0);
             }
 
+            if(e.getSource() == root.bAfficherIndice){
+                new Notice(Joueur.getJoueurActuel());
+            }
+
             if(e.getSource() == root.bPieceRonde){
                 TypePiece.typePieceSelectionnee = TypePiece.PIECERONDE;
                 System.out.println("Le joueur choisit une pièce ronde à placer");
