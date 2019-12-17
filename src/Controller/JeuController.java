@@ -37,7 +37,7 @@ public class JeuController implements ActionListener, MouseListener {
                         new Notice(Joueur.getJoueurActuel(), "Le joueur " + Joueur.getJoueurActuel().getNom() + " remporte à trouvé le monstre. Il remporte la partie !", 1);
                         root.bPieceCubique.setEnabled(false);
                         root.bPieceRonde.setEnabled(false);
-                        root.bPasserTour.setEnabled(false);
+                        //root.bPasserTour.setEnabled(false);
                         root.bAfficherIndice.setEnabled(false);
                         TypePiece.typePieceSelectionnee = TypePiece.PIECECUBIQUE;
                         partieFinie = true;

@@ -86,12 +86,12 @@ public class MenuController implements ActionListener {
                 System.out.println("Le joueur choisit une pièce cubique à placer");
             }
 
-            if(e.getSource() == root.bPasserTour){
+            /*if(e.getSource() == root.bPasserTour){
                 Joueur.joueurSuivant();
                 Joueur.getJoueurActuel().donnerIndice(new Indice(root.getPlateau()));
                 new Notice(Joueur.getJoueurActuel());
                 System.out.println("Tour suivant");
-            }
+            }*/
 
         }
     }

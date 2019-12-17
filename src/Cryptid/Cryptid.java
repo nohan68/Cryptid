@@ -41,7 +41,7 @@ public class Cryptid extends JFrame implements ActionListener {
     public JButton bAfficherIndice;
     public JButton bPieceCubique;
     public JButton bPieceRonde;
-    public JButton bPasserTour;
+    //public JButton bPasserTour;
     public JButton bQuitterPartie;
 
     public Cryptid(){
@@ -76,7 +76,7 @@ public class Cryptid extends JFrame implements ActionListener {
         bAfficherIndice = new JButton("Afficher l'indice");
         bPieceCubique = new JButton("Pièce cubique", TypePiece.PIECECUBIQUE);
         bPieceRonde = new JButton("Pièce ronde", TypePiece.PIECERONDE);
-        bPasserTour = new JButton("Tour suivant");
+        //bPasserTour = new JButton("Tour suivant");
         bQuitterPartie = new JButton("Quitter");
     }
 
@@ -86,7 +86,7 @@ public class Cryptid extends JFrame implements ActionListener {
         bJouer.addActionListener(menuController);
         bQuitter.addActionListener(menuController);
         bQuitterPartie.addActionListener(menuController);
-        bPasserTour.addActionListener(menuController);
+        //bPasserTour.addActionListener(menuController);
         bPieceCubique.addActionListener(menuController);
         bPieceRonde.addActionListener(menuController);
         bAfficherIndice.addActionListener(menuController);
@@ -129,7 +129,7 @@ public class Cryptid extends JFrame implements ActionListener {
         panneauJeu.add(bAfficherIndice);
         panneauJeu.add(bPieceCubique);
         panneauJeu.add(bPieceRonde);
-        panneauJeu.add(bPasserTour);
+        //panneauJeu.add(bPasserTour);
         panneauJeu.add(bQuitterPartie);
         this.fPrincipale.remove(this.fConfig);
         setContentPane(panneauJeu);
