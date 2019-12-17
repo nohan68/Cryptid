@@ -2,10 +2,7 @@ package Controller;
 
 import Cryptid.Cryptid;
 import Cryptid.Notice;
-import Modele.Case;
-import Modele.Joueur;
-import Modele.Piece;
-import Modele.Plateau;
+import Modele.*;
 import Modele.Types.TypePiece;
 
 import java.awt.event.ActionEvent;
@@ -16,6 +13,7 @@ import java.awt.event.MouseListener;
 public class JeuController implements ActionListener, MouseListener {
      Cryptid root;
      public Case c;
+     public boolean partieFinie = false;
 
     public JeuController(Cryptid root){
         this.root = root;
@@ -42,6 +40,7 @@ public class JeuController implements ActionListener, MouseListener {
                         root.bPasserTour.setEnabled(false);
                         root.bAfficherIndice.setEnabled(false);
                         TypePiece.typePieceSelectionnee = TypePiece.PIECECUBIQUE;
+                        partieFinie = true;
                     }
 
                     else if(!root.getPlateau().verifDistanceAvecMonstre(Plateau.getDerniereCase())){
@@ -55,6 +54,13 @@ public class JeuController implements ActionListener, MouseListener {
 
         if(mouseEvent.getButton() == MouseEvent.BUTTON3){
             c.delPiece(c.getPieces(Joueur.getJoueurActuel()));
+        }
+
+        if(!partieFinie){
+            Joueur.joueurSuivant();
+            Joueur.getJoueurActuel().donnerIndice(new Indice(root.getPlateau()));
+            new Notice(Joueur.getJoueurActuel());
+            System.out.println("Tour suivant");
         }
     }
 
