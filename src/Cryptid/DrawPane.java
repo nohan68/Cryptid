@@ -129,40 +129,140 @@ public class DrawPane extends JPanel implements ActionListener {
                     //g.fillOval(i+delta.x,j+delta.y,tailleCase.x,tailleCase.y);
                 }
 
+                int compteur = laCase.getElements().size();
                 for(Element e : laCase.getElements()){
                     switch (e) {
                         case ARBRE:
-                            g.drawImage(Images.imgArbre, i + delta.x, j + delta.y, tailleCase.x, tailleCase.y, this);
+                            if ( compteur == 1 ) {
+                                g.drawImage(Images.imgArbre, i + delta.x, j + delta.y, tailleCase.x/2, tailleCase.y/2, this);
+                                compteur++;
+                            } else if ( compteur == 2 ) {
+                                g.drawImage(Images.imgArbre, i + delta.x + tailleCase.x/2, j + delta.y, tailleCase.x/2, tailleCase.y/2, this);
+                                compteur++;
+                            } else if ( compteur == 3 ) {
+                                g.drawImage(Images.imgArbre, i + delta.x + tailleCase.x/3 , j + delta.y + tailleCase.y/2, tailleCase.x/2, tailleCase.y/2, this);
+                                compteur++;
+                            }
                             break;
                         case ROCHER:
-                            g.drawImage(Images.imgRocher, i + delta.x, j + delta.y, tailleCase.x, tailleCase.y, this);
+                            if ( compteur == 1 ) {
+                                g.drawImage(Images.imgRocher, i + delta.x, j + delta.y, tailleCase.x/2, tailleCase.y/2, this);
+                                compteur++;
+                            } else if ( compteur == 2 ) {
+                                g.drawImage(Images.imgRocher, i + delta.x + tailleCase.x/2, j + delta.y, tailleCase.x/2, tailleCase.y/2, this);
+                                compteur++;
+                            } else if ( compteur == 3 ) {
+                                g.drawImage(Images.imgRocher, i + delta.x + tailleCase.x/3 , j + delta.y + tailleCase.y/2, tailleCase.x/2, tailleCase.y/2, this);
+                                compteur++;
+                            }
                             break;
                         case DUNE:
-                            g.drawImage(Images.imgDune, i + delta.x, j + delta.y, tailleCase.x, tailleCase.y, this);
+                            if ( compteur == 1 ) {
+                                g.drawImage(Images.imgDune, i + delta.x, j + delta.y, tailleCase.x/2, tailleCase.y/2, this);
+                                compteur++;
+                            } else if ( compteur == 2 ) {
+                                g.drawImage(Images.imgDune, i + delta.x + tailleCase.x/2, j + delta.y, tailleCase.x/2, tailleCase.y/2, this);
+                                compteur++;
+                            } else if ( compteur == 3 ) {
+                                g.drawImage(Images.imgDune, i + delta.x + tailleCase.x/3 , j + delta.y + tailleCase.y/2, tailleCase.x/2, tailleCase.y/2, this);
+                                compteur++;
+                            }
                             break;
                         case CACTUS:
-                                g.drawImage(Images.imgCactus, i + delta.x, j + delta.y, tailleCase.x, tailleCase.y, this);
+                            if ( compteur == 1 ) {
+                                g.drawImage(Images.imgCactus, i + delta.x, j + delta.y, tailleCase.x/2, tailleCase.y/2, this);
+                                compteur++;
+                            } else if ( compteur == 2 ) {
+                                g.drawImage(Images.imgCactus, i + delta.x + tailleCase.x/2, j + delta.y, tailleCase.x/2, tailleCase.y/2, this);
+                                compteur++;
+                            } else if ( compteur == 3 ) {
+                                g.drawImage(Images.imgCactus, i + delta.x + tailleCase.x/3 , j + delta.y + tailleCase.y/2, tailleCase.x/2, tailleCase.y/2, this);
+                                compteur++;
+                            }
                             break;
                         case MAELSTORM:
-                                g.drawImage(Images.imgMaelstorm, i + delta.x, j + delta.y, tailleCase.x, tailleCase.y, this);
+                            if ( compteur == 1 ) {
+                                g.drawImage(Images.imgMaelstorm, i + delta.x, j + delta.y, tailleCase.x/2, tailleCase.y/2, this);
+                                compteur++;
+                            } else if ( compteur == 2 ) {
+                                g.drawImage(Images.imgMaelstorm, i + delta.x + tailleCase.x/2, j + delta.y, tailleCase.x/2, tailleCase.y/2, this);
+                                compteur++;
+                            } else if ( compteur == 3 ) {
+                                g.drawImage(Images.imgMaelstorm, i + delta.x + tailleCase.x/3 , j + delta.y + tailleCase.y/2, tailleCase.x/2, tailleCase.y/2, this);
+                                compteur++;
+                            }
                             break;
                         case ETANG:
-                                g.drawImage(Images.imgEtang, i + delta.x, j + delta.y, tailleCase.x, tailleCase.y, this);
+                            if ( compteur == 1 ) {
+                                g.drawImage(Images.imgEtang, i + delta.x, j + delta.y, tailleCase.x/2, tailleCase.y/2, this);
+                                compteur++;
+                            } else if ( compteur == 2 ) {
+                                g.drawImage(Images.imgEtang, i + delta.x + tailleCase.x/2, j + delta.y, tailleCase.x/2, tailleCase.y/2, this);
+                                compteur++;
+                            } else if ( compteur == 3 ) {
+                                g.drawImage(Images.imgEtang, i + delta.x + tailleCase.x/3 , j + delta.y + tailleCase.y/2, tailleCase.x/2, tailleCase.y/2, this);
+                                compteur++;
+                            }
                             break;
                         case SAPIN:
-                                g.drawImage(Images.imgSapin, i + delta.x, j + delta.y, tailleCase.x, tailleCase.y, this);
+                            if ( compteur == 1 ) {
+                                g.drawImage(Images.imgSapin, i + delta.x, j + delta.y, tailleCase.x/2, tailleCase.y/2, this);
+                                compteur++;
+                            } else if ( compteur == 2 ) {
+                                g.drawImage(Images.imgSapin, i + delta.x + tailleCase.x/2, j + delta.y, tailleCase.x/2, tailleCase.y/2, this);
+                                compteur++;
+                            } else if ( compteur == 3 ) {
+                                g.drawImage(Images.imgSapin, i + delta.x + tailleCase.x/3 , j + delta.y + tailleCase.y/2, tailleCase.x/2, tailleCase.y/2, this);
+                                compteur++;
+                            }
                             break;
                         case PYRAMIDE:
-                                g.drawImage(Images.imgPyramide, i + delta.x, j + delta.y, tailleCase.x, tailleCase.y, this);
+                            if ( compteur == 1 ) {
+                                g.drawImage(Images.imgPyramide, i + delta.x, j + delta.y, tailleCase.x/2, tailleCase.y/2, this);
+                                compteur++;
+                            } else if ( compteur == 2 ) {
+                                g.drawImage(Images.imgPyramide, i + delta.x + tailleCase.x/2, j + delta.y, tailleCase.x/2, tailleCase.y/2, this);
+                                compteur++;
+                            } else if ( compteur == 3 ) {
+                                g.drawImage(Images.imgPyramide, i + delta.x + tailleCase.x/3 , j + delta.y + tailleCase.y/2, tailleCase.x/2, tailleCase.y/2, this);
+                                compteur++;
+                            }
                             break;
                         case MAISON:
-                                g.drawImage(Images.imgMaison, i + delta.x, j + delta.y, tailleCase.x, tailleCase.y, this);
+                            if ( compteur == 1 ) {
+                                g.drawImage(Images.imgMaison, i + delta.x, j + delta.y, tailleCase.x/2, tailleCase.y/2, this);
+                                compteur++;
+                            } else if ( compteur == 2 ) {
+                                g.drawImage(Images.imgMaison, i + delta.x + tailleCase.x/2, j + delta.y, tailleCase.x/2, tailleCase.y/2, this);
+                                compteur++;
+                            } else if ( compteur == 3 ) {
+                                g.drawImage(Images.imgMaison, i + delta.x + tailleCase.x/3 , j + delta.y + tailleCase.y/2, tailleCase.x/2, tailleCase.y/2, this);
+                                compteur++;
+                            }
                             break;
                         case ANIMEAUX:
-                                g.drawImage(Images.imgAnimaux, i + delta.x, j + delta.y, tailleCase.x, tailleCase.y, this);
+                            if ( compteur == 1 ) {
+                                g.drawImage(Images.imgAnimaux, i + delta.x, j + delta.y, tailleCase.x/2, tailleCase.y/2, this);
+                                compteur++;
+                            } else if ( compteur == 2 ) {
+                                g.drawImage(Images.imgAnimaux, i + delta.x + tailleCase.x/2, j + delta.y, tailleCase.x/2, tailleCase.y/2, this);
+                                compteur++;
+                            } else if ( compteur == 3 ) {
+                                g.drawImage(Images.imgAnimaux, i + delta.x + tailleCase.x/3 , j + delta.y + tailleCase.y/2, tailleCase.x/2, tailleCase.y/2, this);
+                                compteur++;
+                            }
                             break;
                         case BUISSONS:
-                                g.drawImage(Images.imgBuisson, i + delta.x, j + delta.y, tailleCase.x, tailleCase.y, this);
+                            if ( compteur == 1 ) {
+                                g.drawImage(Images.imgBuisson, i + delta.x, j + delta.y, tailleCase.x/2, tailleCase.y/2, this);
+                                compteur++;
+                            } else if ( compteur == 2 ) {
+                                g.drawImage(Images.imgBuisson, i + delta.x + tailleCase.x/2, j + delta.y, tailleCase.x/2, tailleCase.y/2, this);
+                                compteur++;
+                            } else if ( compteur == 3 ) {
+                                g.drawImage(Images.imgBuisson, i + delta.x + tailleCase.x/3 , j + delta.y + tailleCase.y/2, tailleCase.x/2, tailleCase.y/2, this);
+                                compteur++;
+                            }
                             break;
                     }
 
