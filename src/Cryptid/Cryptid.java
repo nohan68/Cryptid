@@ -18,9 +18,9 @@ public class Cryptid extends JFrame implements ActionListener {
 
     private int vitesseActualisation = 1000;
 
-    private DrawPane       panneauJeu;
+    private DrawPane panneauJeu;
     private MenuController menuController;
-    private JeuController jeuController;
+    public JeuController jeuController;
     private Plateau plateau;
 
     public JPanel  fPrincipale;

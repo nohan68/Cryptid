@@ -4,6 +4,7 @@ import Cryptid.Cryptid;
 import Cryptid.Notice;
 import Modele.Joueur;
 import Modele.Plateau;
+import Modele.Types.TypePiece;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;
@@ -11,8 +12,7 @@ import java.awt.event.ActionListener;
 
 public class NoticeController implements ActionListener {
     Notice root;
-    Plateau p;
-    Cryptid c;
+    public static JButton boutonCreuser;
 
     public NoticeController(Notice root){
         this.root = root;
@@ -33,6 +33,7 @@ public class NoticeController implements ActionListener {
             }
 
             if(e.getSource() == root.bCreuser){
+                boutonCreuser = root.bCreuser;
                 System.out.println(Joueur.getJoueurActuel() + " décide de creuser");
                 root.dispose();
             }

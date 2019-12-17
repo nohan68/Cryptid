@@ -15,6 +15,7 @@ import java.awt.event.MouseListener;
 
 public class JeuController implements ActionListener, MouseListener {
      Cryptid root;
+     public Case c;
 
     public JeuController(Cryptid root){
         this.root = root;
@@ -26,15 +27,14 @@ public class JeuController implements ActionListener, MouseListener {
 
     @Override
     public void mousePressed(MouseEvent mouseEvent) {
-        Case c = root.getPlateau().pixelToCase(mouseEvent.getPoint(), root.getPanneauJeu().getTailleCase());
+        c = root.getPlateau().pixelToCase(mouseEvent.getPoint(), root.getPanneauJeu().getTailleCase());
+        Plateau.setDerniereCase(c);
         if(mouseEvent.getButton() == MouseEvent.BUTTON1) {
             TypePiece tp = TypePiece.typePieceSelectionnee;
             if (c.getPieces(Joueur.getJoueurActuel()).size() < 1) {
                 c.addPiece(new Piece(tp, Joueur.getJoueurActuel()));
                 if(tp == TypePiece.PIECERONDE){
-                    new Notice(Joueur.getJoueurActuel(), tp);
-                    System.out.println(Joueur.getJoueurActuel() + " décide de creuser");
-                    if(root.getPlateau().verifDistanceAvecMonstre(c)){
+                    if(root.getPlateau().verifDistanceAvecMonstre(Plateau.getDerniereCase())){
                         System.out.println("trouvé");
                         new Notice(Joueur.getJoueurActuel(), "Le joueur " + Joueur.getJoueurActuel().getNom() + " remporte à trouvé le monstre. Il remporte la partie !", 1);
                         root.bPieceCubique.setEnabled(false);
@@ -42,7 +42,8 @@ public class JeuController implements ActionListener, MouseListener {
                         root.bPasserTour.setEnabled(false);
                         TypePiece.typePieceSelectionnee = TypePiece.PIECECUBIQUE;
                     }
-                    else{
+
+                    else if(!root.getPlateau().verifDistanceAvecMonstre(Plateau.getDerniereCase())){
                         System.out.println("raté");
                         new Notice("C'est raté !");
                     }

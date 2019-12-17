@@ -29,8 +29,6 @@ public class Notice extends JFrame {
     private boolean indicesAffichees;
     private String message;
     public Joueur j;
-    public Plateau p;
-    public Cryptid root;
 
     private NoticeController noticeController;
 

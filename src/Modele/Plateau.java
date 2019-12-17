@@ -1,6 +1,7 @@
 package Modele;
 
 
+import Controller.JeuController;
 import Modele.Types.Biome;
 import Modele.Types.Element;
 
@@ -9,6 +10,8 @@ import java.util.Random;
 
 
 public class Plateau {
+    private static Case derniereCase;
+
     private int taille;
     private Random hazardeur;
     public Point monstre;
@@ -56,6 +59,14 @@ public class Plateau {
         }
         System.out.println(this);
         System.out.println("Monstre : "+monstre);
+    }
+
+    public static Case getDerniereCase(){
+        return Plateau.derniereCase;
+    }
+
+    public static void setDerniereCase(Case c){
+        Plateau.derniereCase = c;
     }
 
     public Case pixelToCase(Point pixel, Point tailleCase){
