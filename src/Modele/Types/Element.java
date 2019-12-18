@@ -19,9 +19,7 @@ public enum Element {
 
     Biome[] compatibles;
 
-    Element(Biome ... biomes){
-        this.compatibles = biomes;
-    }
+    Element(Biome ... biomes){ this.compatibles = biomes; }
 
     public static ArrayList<Element> getRandom(){
         Random hazardeur = new Random();
